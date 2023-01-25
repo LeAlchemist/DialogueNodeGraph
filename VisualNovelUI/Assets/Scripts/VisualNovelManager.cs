@@ -8,7 +8,6 @@ using TMPro;
 public class VisualNovelManager : MonoBehaviour
 {
     public GameObject textCanvasPanel;
-    public Vector2 textCanvasSize;
     public Color textCanvasColor = new Color(0, 0, 0, 1);
     public TextMeshProUGUI textBox;
     public int currentDialogue;
@@ -16,11 +15,18 @@ public class VisualNovelManager : MonoBehaviour
     [TextArea]
     public string textLog;
 
+
+    void Awake()
+    {
+        RefreshContentFitters();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         currentDialogue = 0;
         textLog = dialogueChunk[currentDialogue].dialogue;
+        RefreshContentFitters();
     }
 
     // Update is called once per frame
@@ -28,6 +34,39 @@ public class VisualNovelManager : MonoBehaviour
     {
         textCanvasPanel.GetComponent<Image>().color = textCanvasColor;
         textBox.text = dialogueChunk[currentDialogue].dialogue;
+        RefreshContentFitters();
+    }
+
+    public void RefreshContentFitters()
+    {
+        var rectTransform = (RectTransform)transform;
+        RefreshContentFitter(rectTransform);
+    }
+ 
+    private void RefreshContentFitter(RectTransform transform)
+    {
+        if (transform == null || !transform.gameObject.activeSelf)
+        {
+            return;
+        }
+     
+        foreach (RectTransform child in transform)
+        {
+            RefreshContentFitter(child);
+        }
+ 
+        var layoutGroup = transform.GetComponent<LayoutGroup>();
+        var contentSizeFitter = transform.GetComponent<ContentSizeFitter>();
+        if (layoutGroup != null)
+        {
+            layoutGroup.SetLayoutHorizontal();
+            layoutGroup.SetLayoutVertical();
+        }
+ 
+        if (contentSizeFitter != null)
+        {
+            LayoutRebuilder.ForceRebuildLayoutImmediate(transform);
+        }
     }
 
     [ContextMenu("Next Dialogue")]
@@ -35,6 +74,7 @@ public class VisualNovelManager : MonoBehaviour
     {
         currentDialogue += 1;
         textLog += dialogueChunk[currentDialogue].dialogue;
+        RefreshContentFitters();
     }
 
     [ContextMenu("Prev Dialogue")]
@@ -42,6 +82,7 @@ public class VisualNovelManager : MonoBehaviour
     {
         textLog = textLog.Replace(dialogueChunk[currentDialogue].dialogue, "");
         currentDialogue -= 1;
+        RefreshContentFitters();
     }
 
     [ContextMenu("View Log")]
