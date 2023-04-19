@@ -7,11 +7,15 @@ using TMPro;
 [ExecuteInEditMode]
 public class VisualNovelManager : MonoBehaviour
 {
-    public GameObject textCanvasPanel;
-    public Color textCanvasColor = new Color(0, 0, 0, 1);
-    public TextMeshProUGUI textBox;
-    public int currentDialogue;
+    public bool dialogueEnabled, logEnabled, posesEnabled, portraitEnabled;
+    public GameObject background, textCanvasPanel, logCanvasPanel;
+    public Color canvasColor = new Color(0, 0, 0, 1);
+    public GameObject portrait;
+    public TextMeshProUGUI headerTextBox;
+    public TextMeshProUGUI bodyTextBox;
+    public int currentChapter, currentDialogue;
     public DialogueChunkScriptable[] dialogueChunk;
+    public TextMeshProUGUI logTextBox;
     [TextArea]
     public string textLog;
 
@@ -24,17 +28,28 @@ public class VisualNovelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        logEnabled = false;
+
         currentDialogue = 0;
-        textLog = dialogueChunk[currentDialogue].dialogue;
+        textLog = dialogueChunk[currentDialogue].dialogueHeader + "\n" + dialogueChunk[currentDialogue].dialogueBody + "\n";
         RefreshContentFitters();
     }
 
     // Update is called once per frame
     void Update()
     {
-        textCanvasPanel.GetComponent<Image>().color = textCanvasColor;
-        textBox.text = dialogueChunk[currentDialogue].dialogue;
+        logCanvasPanel.SetActive(logEnabled);
+
+        textCanvasPanel.GetComponent<Image>().color = canvasColor;
+        logCanvasPanel.GetComponent<Image>().color = canvasColor;
+        headerTextBox.text = dialogueChunk[currentDialogue].dialogueHeader;
+        bodyTextBox.text = dialogueChunk[currentDialogue].dialogueBody;
+        portraitEnabled = dialogueChunk[currentDialogue].hasPortrait;
+        portrait.SetActive(portraitEnabled);
+        posesEnabled = dialogueChunk[currentDialogue].hasPoses;
         RefreshContentFitters();
+
+        logTextBox.text = textLog;
     }
 
     public void RefreshContentFitters()
@@ -72,22 +87,36 @@ public class VisualNovelManager : MonoBehaviour
     [ContextMenu("Next Dialogue")]
     public void nextDialogue()
     {
-        currentDialogue += 1;
-        textLog += dialogueChunk[currentDialogue].dialogue;
-        RefreshContentFitters();
+        if (currentDialogue < (dialogueChunk.Length - 1))
+        {
+            currentDialogue += 1;
+            textLog += dialogueChunk[currentDialogue].dialogueHeader + "\n" + dialogueChunk[currentDialogue].dialogueBody + "\n";
+            RefreshContentFitters();
+        }
     }
 
     [ContextMenu("Prev Dialogue")]
     public void prevDialogue()
     {
-        textLog = textLog.Replace(dialogueChunk[currentDialogue].dialogue, "");
-        currentDialogue -= 1;
-        RefreshContentFitters();
+        if (currentDialogue != 0)
+        {
+            textLog = textLog.Replace(dialogueChunk[currentDialogue].dialogueBody, "");
+            textLog = textLog.Replace(dialogueChunk[currentDialogue].dialogueHeader + "\n", "");
+            currentDialogue -= 1;
+            RefreshContentFitters();
+        }
+        
     }
 
     [ContextMenu("View Log")]
     public void viewTextLog()
     {
-        
+        logEnabled = true;
+    }
+
+    [ContextMenu("Close Log")]
+    public void closeTextLog()
+    {
+        logEnabled = false;
     }
 }

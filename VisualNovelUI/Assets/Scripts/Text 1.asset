@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 207547eece9a73d45aee4905eb3bca1f, type: 3}
   m_Name: Text 1
   m_EditorClassIdentifier: 
-  dialogue: 'Text 1
-
-'
+  hasPoses: 1
+  hasPortrait: 0
+  dialogueHeader: First box
+  dialogueBody: This is text 1, only 1 line of text here

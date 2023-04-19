@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 207547eece9a73d45aee4905eb3bca1f, type: 3}
   m_Name: Text 2
   m_EditorClassIdentifier: 
-  dialogue: 'Text 2
+  hasPoses: 0
+  hasPortrait: 1
+  dialogueHeader: Second box
+  dialogueBody: 'this is a second text box
 
-    This one has 2 lines
-
-'
+    oh look 2 lines of text'

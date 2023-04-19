@@ -37,7 +37,13 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\VisualNovelManager.cs" />
+     <Compile Include="Assets\Scripts\ChapterChunkScriptable.cs" />
+     <Compile Include="Assets\Scripts\SelectPoseScriptable.cs" />
+     <Compile Include="Assets\Scripts\SelectPortraitScriptable.cs" />
      <Compile Include="Assets\Scripts\DialogueChunkScriptable.cs" />
+     <Compile Include="Assets\Scripts\DialogueGraph.cs" />
+     <Compile Include="Assets\Scripts\DialogueGraphView.cs" />
+     <Compile Include="Assets\Scripts\DialogueNode.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -54,6 +60,7 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\Resources\DialogueGraph.uss" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />

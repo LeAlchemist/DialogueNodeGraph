@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 207547eece9a73d45aee4905eb3bca1f, type: 3}
   m_Name: Text 3
   m_EditorClassIdentifier: 
-  dialogue: 'Text 3
+  hasPoses: 1
+  hasPortrait: 1
+  dialogueHeader: Third box
+  dialogueBody: 'Woo third box
 
-    what is this?
+    lets do something crazy
 
-    a third line???'
+    lets have 3 lines
+    of text'
