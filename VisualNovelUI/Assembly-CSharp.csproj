@@ -43,11 +43,11 @@
      <Compile Include="Assets\Scripts\SelectPoseScriptable.cs" />
      <Compile Include="Assets\Scripts\SelectPortraitScriptable.cs" />
      <Compile Include="Assets\Scripts\DialogueChunkScriptable.cs" />
-     <Compile Include="Assets\Scripts\Dialogue Graph\DialogueNode.cs" />
+     <Compile Include="Assets\Scripts\Dialogue Graph\GraphSaveUtility.cs" />
+     <Compile Include="Assets\Scripts\Runtime\DialogueContainer.cs" />
      <Compile Include="Assets\Scripts\Runtime\DialogueNodeData.cs" />
      <Compile Include="Assets\Scripts\Runtime\NodeLinkData.cs" />
-     <Compile Include="Assets\Scripts\Runtime\DialogueContainer.cs" />
-     <Compile Include="Assets\Scripts\Dialogue Graph\GraphSaveUtility.cs" />
+     <Compile Include="Assets\Scripts\Dialogue Graph\DialogueNode.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

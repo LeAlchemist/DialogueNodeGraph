@@ -75,10 +75,19 @@ public class DialogueGraph : EditorWindow
         }
     }
 
+    private void GenerateMiniMap()
+    {
+        var minimap = new MiniMap{anchored = true};
+        minimap.SetPosition(new Rect(10, 30, 200, 140));
+        _graphview.Add(minimap);
+
+    }
+
     private void OnEnable()
     {
         ContructGraphView();
         GenerateToolbar();
+        GenerateMiniMap();
     }
 
     private void OnDisable()
