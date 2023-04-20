@@ -7,6 +7,7 @@ using UnityEngine;
 public class DialogueNodeData
 {
     public string GUID;
+    public string NodeType;
     public string DialogueText;
     public Vector2 Position;
 }

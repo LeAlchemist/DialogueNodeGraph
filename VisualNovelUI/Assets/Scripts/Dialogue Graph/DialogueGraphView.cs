@@ -53,6 +53,7 @@ public class DialogueGraphView : GraphView
         {
             title = "Start",
             GUID = Guid.NewGuid().ToString(),
+            NodeType = "Entry",
             dialogueText = "Entry Point",
             entryPoint = true
         };
@@ -82,6 +83,7 @@ public class DialogueGraphView : GraphView
         var dialogueNode = new DialogueNode
         {
             title = nodeName,
+            NodeType = "Dialogue",
             dialogueText = nodeName,
             GUID = Guid.NewGuid().ToString()
         };

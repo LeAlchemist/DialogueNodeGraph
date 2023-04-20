@@ -51,6 +51,7 @@ public class GraphSaveUtility
             dialogueContainer.DialogueNodeData.Add(new DialogueNodeData
             {
                 GUID = dialogueNode.GUID,
+                NodeType = dialogueNode.NodeType,
                 DialogueText = dialogueNode.dialogueText,
                 Position = dialogueNode.GetPosition().position
             });
@@ -94,6 +95,7 @@ public class GraphSaveUtility
     {
         foreach (var nodeData in _containerCache.DialogueNodeData)
         {
+
             var tempNode = _targetGraphView.CreateDialogueNode(nodeData.DialogueText);
             tempNode.GUID = nodeData.GUID;
             _targetGraphView.AddElement(tempNode);
@@ -106,20 +108,22 @@ public class GraphSaveUtility
     private void ConnectNodes()
     {
         for (var i = 0; i < Nodes.Count; i++)
+        {
+            var k = i; //Prevent access to modified closure
+            var connections = _containerCache.NodeLinks.Where(x => x.BaseNodeGuid == Nodes[k].GUID).ToList();
+            for (var j = 0; j < connections.Count(); j++)
             {
-                var k = i; //Prevent access to modified closure
-                var connections = _containerCache.NodeLinks.Where(x => x.BaseNodeGuid == Nodes[k].GUID).ToList();
-                for (var j = 0; j < connections.Count(); j++)
-                {
-                    var targetNodeGUID = connections[j].TargetNodeGuid;
-                    var targetNode = Nodes.First(x => x.GUID == targetNodeGUID);
-                    LinkNodes(Nodes[i].outputContainer[j].Q<Port>(), (Port) targetNode.inputContainer[0]);
+                var targetNodeGUID = connections[j].TargetNodeGuid;
+                var targetNode = Nodes.First(x => x.GUID == targetNodeGUID);
+                LinkNodes(Nodes[i].outputContainer[j].Q<Port>(), (Port) targetNode.inputContainer[0]);
 
-                    targetNode.SetPosition(new Rect(
-                        _containerCache.DialogueNodeData.First(x => x.GUID == targetNodeGUID).Position,
-                        _targetGraphView.defaultNodeSize));
-                }
+                targetNode.SetPosition(new Rect(
+                    _containerCache.DialogueNodeData.First(x => x.GUID == targetNodeGUID).Position,
+                    _targetGraphView.defaultNodeSize));
             }
+        }
+
+        
     }
 
     private void LinkNodes(Port output, Port input)
