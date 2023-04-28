@@ -1,6 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7732609787445441108
+--- !u!114 &-5124921041761843384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12d61ecad74d12a41838205e6413b64a, type: 3}
+  m_Name: DebugLogNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 0fa699e62b2320144bc2f5cd756e2f80
+  position: {x: 561.88, y: 97}
+  message: 1-2-3 Debug
+--- !u!114 &-3339521436581990366
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14,13 +31,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  guid: a39cbc44226d8d84abdcf61c2f323604
-  position: {x: 7, y: 119}
+  guid: 9cd61bcdfe9a6ea4bb4857e482f172bd
+  position: {x: 194.12, y: 97}
   children:
-  - {fileID: -1102742780612705250}
-  - {fileID: 2568153004582365354}
-  dialogueText: test
---- !u!114 &-6782490564356081035
+  - {fileID: -2718751897558108838}
+  - {fileID: 3613510059530731961}
+  - {fileID: 5601647332823549441}
+  dialogueText: 1
+  debugText: 1
+--- !u!114 &-2718751897558108838
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -34,12 +53,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  guid: d4accc5365b898f4c82331189ba0a774
-  position: {x: 108, y: -13.759979}
+  guid: fa95f802139fe0046ab500a43a3b7d16
+  position: {x: 371.68, y: 97.000015}
   children:
-  - {fileID: -7732609787445441108}
-  dialogueText: Enter Text Here
---- !u!114 &-1102742780612705250
+  - {fileID: 7057651781513497589}
+  - {fileID: 5601647332823549441}
+  dialogueText: 1-2
+  debugText: 1
+--- !u!114 &-1017913106722825271
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48,17 +69,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efb15c7bcb204c64b8aed956f64c1752, type: 3}
-  m_Name: DialogueNode
+  m_Script: {fileID: 11500000, guid: 4f398352d1e20764b9e4b73cb5d5b424, type: 3}
+  m_Name: RootNode
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  guid: f2d91fc05e492d34085802530f788b39
-  position: {x: 201, y: 119}
-  children:
-  - {fileID: 7044175897885513980}
-  - {fileID: -6782490564356081035}
-  dialogueText: Enter Text Here
+  guid: f360d7a2da306b04cb96db4c678bf774
+  position: {x: 56, y: 97.399994}
+  child: {fileID: -3339521436581990366}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,15 +89,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43150adea65c9964b8fa411356acf46c, type: 3}
   m_Name: New Dialogue Graph
   m_EditorClassIdentifier: 
-  rootNode: {fileID: 0}
+  rootNode: {fileID: -1017913106722825271}
   graphState: 0
   nodes:
-  - {fileID: -7732609787445441108}
-  - {fileID: -1102742780612705250}
-  - {fileID: 7044175897885513980}
-  - {fileID: 2568153004582365354}
-  - {fileID: -6782490564356081035}
---- !u!114 &2568153004582365354
+  - {fileID: -1017913106722825271}
+  - {fileID: -3339521436581990366}
+  - {fileID: -2718751897558108838}
+  - {fileID: -5124921041761843384}
+  - {fileID: 7057651781513497589}
+  - {fileID: 3613510059530731961}
+  - {fileID: 5601647332823549441}
+--- !u!114 &3613510059530731961
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,10 +113,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  guid: e070792245e11ac429818f643825ebf4
-  position: {x: 201, y: 255}
-  message: 
---- !u!114 &7044175897885513980
+  guid: 2b8a71b98a820064fb819d6441e0ecf9
+  position: {x: 363.00003, y: 203.51999}
+  message: 1 Debug
+--- !u!114 &5601647332823549441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb15c7bcb204c64b8aed956f64c1752, type: 3}
+  m_Name: DialogueNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: c2dbdc967e9235a4ea7e13e6c74306ce
+  position: {x: 372.00003, y: -26.399994}
+  children:
+  - {fileID: -5124921041761843384}
+  dialogueText: 1-2-3
+  debugText: 1
+--- !u!114 &7057651781513497589
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,6 +150,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  guid: 2caaf3fa584192948919aa631940be94
-  position: {x: 401.84006, y: 119}
-  message: 
+  guid: 3b3b62d6ebf12dd45821308bf91c69ab
+  position: {x: 562, y: 214.04001}
+  message: 1-2 Debug

@@ -38,6 +38,13 @@ public class DialogueGraphView : GraphView
         DeleteElements(graphElements);
         graphViewChanged += OnGraphViewChanged;
 
+        if (graph.rootNode == null)
+        {
+            graph.rootNode = graph.CreateNode(typeof(RootNode)) as RootNode;
+            EditorUtility.SetDirty(graph);
+            AssetDatabase.SaveAssets();
+        }
+
         // creates the node views on graph
         graph.nodes.ForEach(n => CreateNodeView(n));
 
@@ -100,7 +107,7 @@ public class DialogueGraphView : GraphView
             var types = TypeCache.GetTypesDerivedFrom<ActionNode>();
             foreach (var type in types)
             {
-                evt.menu.AppendAction($"[{type.BaseType.Name}] {type.Name}", (a) => CreateNode(type));
+                evt.menu.AppendAction($"{type.Name}", (a) => CreateNode(type));
             }
         }
 
@@ -108,7 +115,7 @@ public class DialogueGraphView : GraphView
             var types = TypeCache.GetTypesDerivedFrom<CompositeNode>();
             foreach (var type in types)
             {
-                evt.menu.AppendAction($"[{type.BaseType.Name}] {type.Name}", (a) => CreateNode(type));
+                evt.menu.AppendAction($"{type.Name}", (a) => CreateNode(type));
             }
         }
 
@@ -116,18 +123,18 @@ public class DialogueGraphView : GraphView
             var types = TypeCache.GetTypesDerivedFrom<DecoratorNode>();
             foreach (var type in types)
             {
-                evt.menu.AppendAction($"[{type.BaseType.Name}] {type.Name}", (a) => CreateNode(type));
+                evt.menu.AppendAction($"{type.Name}", (a) => CreateNode(type));
             }
         }
     }
 
-    void CreateNode(System.Type type)
+    public void CreateNode(System.Type type)
     {
         Node node = graph.CreateNode(type);
         CreateNodeView(node);
     }
 
-    void CreateNodeView(Node node)
+    public void CreateNodeView(Node node)
     {
         NodeView nodeView = new NodeView(node);
         nodeView.OnNodeSelected = OnNodeSelected;

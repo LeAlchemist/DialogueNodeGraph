@@ -46,6 +46,12 @@ public class DialogueGraph : ScriptableObject
         {
             decorator.child = child;
         }
+        
+        RootNode root = parent as RootNode;
+        if (root)
+        {
+            root.child = child;
+        }
 
         CompositeNode composite = parent as CompositeNode;
         if (composite)
@@ -60,6 +66,12 @@ public class DialogueGraph : ScriptableObject
         if (decorator)
         {
             decorator.child = null;
+        }
+
+        RootNode root = parent as RootNode;
+        if (root)
+        {
+            root.child = null;
         }
 
         CompositeNode composite = parent as CompositeNode;
@@ -79,6 +91,12 @@ public class DialogueGraph : ScriptableObject
            children.Add(decorator.child);
         }
 
+        RootNode root = parent as RootNode;
+        if (root && root.child != null)
+        {
+            children.Add(root.child);
+        }
+
         CompositeNode composite = parent as CompositeNode;
         if (composite)
         {
@@ -86,5 +104,12 @@ public class DialogueGraph : ScriptableObject
         }
 
         return children;
+    }
+
+    public DialogueGraph Clone()
+    {
+        DialogueGraph graph = Instantiate(this);
+        graph.rootNode = graph.rootNode.Clone();
+        return graph;
     }
 }
