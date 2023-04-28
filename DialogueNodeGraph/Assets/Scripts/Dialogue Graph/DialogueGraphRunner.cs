@@ -8,7 +8,14 @@ public class DialogueGraphRunner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       graph = graph.Clone();
+        graph = ScriptableObject.CreateInstance<DialogueGraph>();
+        var logNode = ScriptableObject.CreateInstance<DebugLogNode>();
+        logNode.message = "Test State";
+
+        var dialogueNode = ScriptableObject.CreateInstance<DialogueNode>();
+        logNode.message = dialogueNode.dialogueText;
+        
+        graph.rootNode = logNode;
     }
 
     // Update is called once per frame

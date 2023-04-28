@@ -13,7 +13,7 @@ public class DialogueGraphEditor : EditorWindow
     public static void OpenWindow()
     {
         DialogueGraphEditor wnd = GetWindow<DialogueGraphEditor>();
-        wnd.titleContent = new GUIContent("Dialogue Graph Editor");
+        wnd.titleContent = new GUIContent("DialogueGraphEditor");
     }
 
     public void CreateGUI()
@@ -40,7 +40,7 @@ public class DialogueGraphEditor : EditorWindow
     private void OnSelectionChange()
     {
         DialogueGraph graph = Selection.activeObject as DialogueGraph;
-        if (graph && AssetDatabase.CanOpenAssetInEditor(graph.GetInstanceID()))
+        if (graph)
         {
             graphView.PopulateView(graph);
         }

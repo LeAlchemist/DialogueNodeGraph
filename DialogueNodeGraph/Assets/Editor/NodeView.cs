@@ -29,31 +29,19 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
         {
             case ActionNode:
                 input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(bool));
-                if (input != null)
-                {
-                    input.portName = "Input";
-                    inputContainer.Add(input);
-                }
                 break;
             case CompositeNode:
-                input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(bool));
-                if (input != null)
-                {
-                    input.portName = "Input";
-                    inputContainer.Add(input);
-                }
+                input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(bool));
                 break;
             case DecoratorNode:
-                input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(bool));
-                if (input != null)
-                {
-                    input.portName = "Input";
-                    inputContainer.Add(input);
-                }
+                input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(bool));
                 break;
-            case RootNode:
-                input = null;
-                break;
+        }
+
+        if (input != null)
+        {
+            input.portName = "";
+            inputContainer.Add(input);
         }
     }
 
@@ -70,14 +58,11 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
             case DecoratorNode:
                 output = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(bool));
                 break;
-            case RootNode:
-                output = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(bool));
-                break;
         }
 
         if (output != null)
         {
-            output.portName = "Next";
+            output.portName = "";
             outputContainer.Add(output);
         }
     }
