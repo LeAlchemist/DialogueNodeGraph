@@ -37,10 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Editor\DialogueGraphView.cs" />
+     <Compile Include="Assets\Editor\NodeView.cs" />
      <Compile Include="Assets\Editor\SplitView.cs" />
      <Compile Include="Assets\Editor\InspectorView.cs" />
      <Compile Include="Assets\Editor\DialogueGraphEditor.cs" />
-     <Compile Include="Assets\Editor\NodeView.cs" />
      <None Include="Assets\Editor\DialogueGraphEditor.uss" />
      <None Include="Assets\Editor\DialogueGraphEditor.uxml" />
     <Reference Include="UnityEngine">

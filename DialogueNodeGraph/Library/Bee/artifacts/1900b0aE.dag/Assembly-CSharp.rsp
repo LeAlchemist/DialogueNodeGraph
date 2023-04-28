@@ -354,6 +354,7 @@
 "Assets/Scripts/Dialogue Graph/Node Types/ActionNode.cs"
 "Assets/Scripts/Dialogue Graph/Node Types/CompositeNode.cs"
 "Assets/Scripts/Dialogue Graph/Node Types/DecoratorNode.cs"
+"Assets/Scripts/Dialogue Graph/Node Types/RootNode.cs"
 "Assets/Scripts/Dialogue Graph/Nodes/DebugLogNode.cs"
 "Assets/Scripts/Dialogue Graph/Nodes/DialogueNode.cs"
 "Assets/Scripts/Node.cs"

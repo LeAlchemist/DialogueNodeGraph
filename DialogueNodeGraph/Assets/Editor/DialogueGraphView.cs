@@ -8,6 +8,7 @@ using System.Linq;
 
 public class DialogueGraphView : GraphView
 {
+    public Action<NodeView> OnNodeSelected;
     public new class UxmlFactory : UxmlFactory<DialogueGraphView, GraphView.UxmlTraits>{}
     DialogueGraph graph;
 
@@ -129,6 +130,7 @@ public class DialogueGraphView : GraphView
     void CreateNodeView(Node node)
     {
         NodeView nodeView = new NodeView(node);
+        nodeView.OnNodeSelected = OnNodeSelected;
         AddElement(nodeView);
     }
 }

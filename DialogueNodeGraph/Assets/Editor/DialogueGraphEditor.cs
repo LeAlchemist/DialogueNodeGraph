@@ -32,6 +32,7 @@ public class DialogueGraphEditor : EditorWindow
 
         graphView = root.Q<DialogueGraphView>();
         inspectorView = root.Q<InspectorView>();
+        graphView.OnNodeSelected = OnNodeSelectionChanged;
 
         OnSelectionChange();
     }
@@ -43,5 +44,10 @@ public class DialogueGraphEditor : EditorWindow
         {
             graphView.PopulateView(graph);
         }
+    }
+
+    void OnNodeSelectionChanged(NodeView node)
+    {
+        inspectorView.UpdateSelection(node);
     }
 }

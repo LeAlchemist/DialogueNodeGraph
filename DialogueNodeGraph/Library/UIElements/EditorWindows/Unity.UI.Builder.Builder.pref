@@ -76,7 +76,7 @@ MonoBehaviour:
   - '{"m_ElementInfoVisibilityState":0}'
   - '{"m_ExpandedItemIds":[1,-1764675798,-511977092,4,1811097952,1542662363,555033228,5,283596720,-1956731121]}'
   - '{"m_ShowAlternatingRowBackgrounds":0,"m_ScrollOffset":{"x":0.0,"y":0.0}}'
-  - '{"m_Value":0.0,"m_LowValue":0.0,"m_HighValue":0.0}'
+  - '{"m_Value":0.0,"m_LowValue":0.0,"m_HighValue":-45.0}'
   - '{"m_Value":0.0,"m_LowValue":0.0,"m_HighValue":0.0}'
   - '{"m_ShowPackageTemplates":false,"m_ViewMode":0,"m_ActiveTab":0}'
   - '{"m_SelectedItemId":-1268115984}'

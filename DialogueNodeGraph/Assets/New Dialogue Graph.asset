@@ -15,11 +15,11 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: a39cbc44226d8d84abdcf61c2f323604
-  position: {x: 24.880005, y: 119}
+  position: {x: 7, y: 119}
   children:
   - {fileID: -1102742780612705250}
   - {fileID: 2568153004582365354}
-  dialogueText: Enter Text Here
+  dialogueText: test
 --- !u!114 &-6782490564356081035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,7 +94,7 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: e070792245e11ac429818f643825ebf4
-  position: {x: 201, y: 256.2}
+  position: {x: 201, y: 255}
   message: 
 --- !u!114 &7044175897885513980
 MonoBehaviour:

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DialogueNode : CompositeNode
 {
+    [TextArea(3 , 6)]
     public string dialogueText = "Enter Text Here";
 
     protected override void OnStart()
