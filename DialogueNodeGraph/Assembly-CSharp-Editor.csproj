@@ -36,12 +36,13 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Editor\DialogueTreeEditor.cs" />
      <Compile Include="Assets\Editor\DialogueGraphView.cs" />
      <Compile Include="Assets\Editor\SplitView.cs" />
      <Compile Include="Assets\Editor\InspectorView.cs" />
-     <None Include="Assets\Editor\DialogueTreeEditor.uss" />
-     <None Include="Assets\Editor\DialogueTreeEditor.uxml" />
+     <Compile Include="Assets\Editor\DialogueGraphEditor.cs" />
+     <Compile Include="Assets\Editor\NodeView.cs" />
+     <None Include="Assets\Editor\DialogueGraphEditor.uss" />
+     <None Include="Assets\Editor\DialogueGraphEditor.uxml" />
     <Reference Include="UnityEngine">
         <HintPath>E:\Program Files\Unity\Hub\Editor\2021.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

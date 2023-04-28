@@ -363,9 +363,10 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.TestRunner.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/Editor/DialogueGraphEditor.cs"
 "Assets/Editor/DialogueGraphView.cs"
-"Assets/Editor/DialogueTreeEditor.cs"
 "Assets/Editor/InspectorView.cs"
+"Assets/Editor/NodeView.cs"
 "Assets/Editor/SplitView.cs"
 -langversion:9.0
 
