@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
+using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.Experimental.GraphView;
 using System;
@@ -48,7 +49,7 @@ public class DialogueGraphView : GraphView
                 NodeView parentView = FindNodeView(n);
                 NodeView childView = FindNodeView(c);
 
-                Edge edge = parentView.output.ConnectTo(childView.input);
+                List<Edge> edge = parentView.output.ConnectTo(childView.input).ToList();
                 AddElement(edge);
             });
         });
@@ -97,23 +98,7 @@ public class DialogueGraphView : GraphView
     {
         //base.BuildContextualMenu(evt);
         {
-            var types = TypeCache.GetTypesDerivedFrom<ActionNode>();
-            foreach (var type in types)
-            {
-                evt.menu.AppendAction($"[{type.BaseType.Name}] {type.Name}", (a) => CreateNode(type));
-            }
-        }
-
-        {
-            var types = TypeCache.GetTypesDerivedFrom<CompositeNode>();
-            foreach (var type in types)
-            {
-                evt.menu.AppendAction($"[{type.BaseType.Name}] {type.Name}", (a) => CreateNode(type));
-            }
-        }
-
-        {
-            var types = TypeCache.GetTypesDerivedFrom<DecoratorNode>();
+            var types = TypeCache.GetTypesDerivedFrom<Node>();
             foreach (var type in types)
             {
                 evt.menu.AppendAction($"[{type.BaseType.Name}] {type.Name}", (a) => CreateNode(type));

@@ -41,31 +41,19 @@ public class DialogueGraph : ScriptableObject
 
     public void AddChild(Node parent, Node child)
     {
-        DecoratorNode decorator = parent as DecoratorNode;
-        if (decorator)
+        Node node = parent as Node;
+        if (node)
         {
-            decorator.child = child;
-        }
-
-        CompositeNode composite = parent as CompositeNode;
-        if (composite)
-        {
-            composite.children.Add(child);
+            node.children.Add(child);
         }
     }
 
     public void RemoveChild(Node parent, Node child)
     {
-        DecoratorNode decorator = parent as DecoratorNode;
-        if (decorator)
+        Node node = parent as Node;
+        if (node)
         {
-            decorator.child = null;
-        }
-
-        CompositeNode composite = parent as CompositeNode;
-        if (composite)
-        {
-            composite.children.Remove(child);
+            node.children.Remove(child);
         }
     }
 
@@ -73,16 +61,10 @@ public class DialogueGraph : ScriptableObject
     {
         List<Node> children = new List<Node>();
 
-        DecoratorNode decorator = parent as DecoratorNode;
-        if (decorator && decorator.child != null)
+        Node node = parent as Node;
+        if (node)
         {
-           children.Add(decorator.child);
-        }
-
-        CompositeNode composite = parent as CompositeNode;
-        if (composite)
-        {
-            return composite.children;
+            return node.children;
         }
 
         return children;

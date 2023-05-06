@@ -39,12 +39,9 @@
      <Compile Include="Assets\Scripts\Dialogue Graph\Nodes\DialogueNode.cs" />
      <Compile Include="Assets\Scripts\Dialogue Graph\DialogueGraphRunner.cs" />
      <Compile Include="Assets\Scripts\Dialogue Graph\DialogueGraph.cs" />
+     <Compile Include="Assets\Scripts\Dialogue Graph\Nodes\RootNode.cs" />
      <Compile Include="Assets\Scripts\Dialogue Graph\Nodes\DebugLogNode.cs" />
-     <Compile Include="Assets\Scripts\Dialogue Graph\Node Types\CompositeNode.cs" />
-     <Compile Include="Assets\Scripts\Dialogue Graph\Node Types\ActionNode.cs" />
      <Compile Include="Assets\Scripts\Node.cs" />
-     <Compile Include="Assets\Scripts\Dialogue Graph\Node Types\DecoratorNode.cs" />
-     <Compile Include="Assets\Scripts\Dialogue Graph\Node Types\RootNode.cs" />
     <Reference Include="UnityEngine">
         <HintPath>E:\Program Files\Unity\Hub\Editor\2021.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

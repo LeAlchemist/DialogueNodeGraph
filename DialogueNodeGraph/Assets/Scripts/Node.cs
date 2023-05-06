@@ -15,6 +15,7 @@ public abstract class Node : ScriptableObject
     public State state = State.Running;
     [HideInInspector]
     public bool started = false;
+    public List<Node> children = new List<Node>();
     public string guid;
     public Vector2 position;
 

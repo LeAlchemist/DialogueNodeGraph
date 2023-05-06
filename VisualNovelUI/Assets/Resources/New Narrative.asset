@@ -15,13 +15,18 @@ MonoBehaviour:
   NodeLinks:
   - BaseNodeGuid: c253e91b-a7c6-409c-abce-5395ca6eba0f
     PortName: Next
-    TargetNodeGuid: 3f241f13-5d93-4e9b-97fc-2bd0ef18f1f5
+    TargetNodeGuid: b826ac5a-d86a-41ae-b846-dad065e9d0f1
+    TargetNodePort: Input
+  - BaseNodeGuid: b826ac5a-d86a-41ae-b846-dad065e9d0f1
+    PortName: Choice 0
+    TargetNodeGuid: 7f174ff1-52e0-47b5-8520-96ae19754b77
     TargetNodePort: Input
   DialogueNodeData:
-  - GUID: 3f241f13-5d93-4e9b-97fc-2bd0ef18f1f5
+  - GUID: 7f174ff1-52e0-47b5-8520-96ae19754b77
     NodeType: Dialogue
-    DialogueText: But I must explain to you how all this mistaken idea of denouncing
-      pleasure and praising pain was born and I will give you a complete account
-      of the system, and expound the actual teachings of the great explorer of the
-      truth, the master-builder of hu
-    Position: {x: 237, y: 200}
+    DialogueText: Dialogue Node
+    Position: {x: 517, y: 200}
+  - GUID: b826ac5a-d86a-41ae-b846-dad065e9d0f1
+    NodeType: Dialogue
+    DialogueText: Dialogue Node
+    Position: {x: 243, y: 200}

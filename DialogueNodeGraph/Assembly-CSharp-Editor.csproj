@@ -43,6 +43,8 @@
      <Compile Include="Assets\Editor\DialogueGraphEditor.cs" />
      <None Include="Assets\Editor\DialogueGraphEditor.uss" />
      <None Include="Assets\Editor\DialogueGraphEditor.uxml" />
+     <None Include="Assets\Editor\NodeView.uxml" />
+     <None Include="Assets\Editor\NodeViewStyle.uss" />
     <Reference Include="UnityEngine">
         <HintPath>E:\Program Files\Unity\Hub\Editor\2021.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

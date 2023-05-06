@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueNode : CompositeNode
+public class DialogueNode : Node
 {
     [TextArea(3 , 6)]
     public string dialogueText = "Enter Text Here";
