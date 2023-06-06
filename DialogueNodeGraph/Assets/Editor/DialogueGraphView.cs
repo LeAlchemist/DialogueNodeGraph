@@ -49,8 +49,8 @@ public class DialogueGraphView : GraphView
                 NodeView parentView = FindNodeView(n);
                 NodeView childView = FindNodeView(c);
 
-                List<Edge> edge = parentView.output.ConnectTo(childView.input).ToList();
-                AddElement(edge);
+                //List<Edge> edge = parentView.output.ConnectTo(childView.input).ToList();
+                //AddElement(edge);
             });
         });
     }

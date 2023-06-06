@@ -16,7 +16,7 @@ MonoBehaviour:
   started: 0
   children: []
   guid: 42a1ff18ef462fe419696f2ca6e990af
-  position: {x: 0, y: 0}
+  position: {x: 319.32, y: 135}
   dialogueText: Enter Text Here
 --- !u!114 &-1007142842337588743
 MonoBehaviour:
@@ -34,7 +34,7 @@ MonoBehaviour:
   started: 0
   children: []
   guid: 504ff30081840a34fb1f3de6db46f953
-  position: {x: 98.72, y: 134.76001}
+  position: {x: 99, y: 135}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

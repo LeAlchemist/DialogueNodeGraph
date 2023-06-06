@@ -124,15 +124,15 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
 
     private void RemovePort(Node node, Port generatedPort)
     {
-        var targetEdge = output.ConnectTo(input).ToList().Where(x => 
-        x.output.portName == generatedPort.portName && x.output.node == generatedPort.node);
-
-        if (targetEdge.Any()) 
-        {
-            var edge = targetEdge.First();
-            edge.input.Disconnect(edge);
-            outputContainer.Remove(targetEdge.First());
-        }
+        //var targetEdge = output.ConnectTo(input).ToList().Where(x => 
+        //x.output.portName == generatedPort.portName && x.output.node == generatedPort.node);
+//
+        //if (targetEdge.Any()) 
+        //{
+        //    var edge = targetEdge.First();
+        //    edge.input.Disconnect(edge);
+        //    outputContainer.Remove(targetEdge.First());
+        //}
 
         Remove(generatedPort);
         RefreshPorts();
