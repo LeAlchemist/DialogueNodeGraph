@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5596781375656458585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f398352d1e20764b9e4b73cb5d5b424, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  children: []
+  guid: 799a3c156a9652e4fa21a3078de667a0
+  position: {x: 0, y: 0}
 --- !u!114 &-3882225116802375076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18,6 +35,42 @@ MonoBehaviour:
   guid: 42a1ff18ef462fe419696f2ca6e990af
   position: {x: 319.32, y: 135}
   dialogueText: Enter Text Here
+--- !u!114 &-1851090546519039015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12d61ecad74d12a41838205e6413b64a, type: 3}
+  m_Name: DebugLogNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  children: []
+  guid: 68697e7365ad5a44d885bc33faa24290
+  position: {x: 540.4, y: 288.04}
+  message: 
+--- !u!114 &-1583200575742640373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb15c7bcb204c64b8aed956f64c1752, type: 3}
+  m_Name: DialogueNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  children: []
+  guid: 9a2e6b1f111dc374b86cca360c21dc7d
+  position: {x: 0, y: 0}
+  dialogueText: Enter Text Here
 --- !u!114 &-1007142842337588743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32,7 +85,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
-  children: []
+  children:
+  - {fileID: -3882225116802375076}
   guid: 504ff30081840a34fb1f3de6db46f953
   position: {x: 99, y: 135}
 --- !u!114 &11400000
@@ -52,3 +106,6 @@ MonoBehaviour:
   nodes:
   - {fileID: -1007142842337588743}
   - {fileID: -3882225116802375076}
+  - {fileID: -1851090546519039015}
+  - {fileID: -5596781375656458585}
+  - {fileID: -1583200575742640373}
