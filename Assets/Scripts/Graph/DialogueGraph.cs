@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
@@ -8,33 +6,28 @@ using UnityEditor.UIElements;
 
 public class DialogueGraph : EditorWindow
 {
-    private DialogueGraphView _graphview;
-    private string _fileName = "New Narrative";
+    private DialogueGraphView _graphView;
+    public string _fileName = "New Narrative";
 
-    [MenuItem("Graph/Dialogue Graph")]
+    [MenuItem("Graph/New Dialogue Graph")]
     public static void OpenDialogueGraphWindow()
     {
         var window = GetWindow<DialogueGraph>();
         window.titleContent = new GUIContent(text: "Dialogue Graph");
     }
 
-
-    private void ContructGraphView()
+    public void GenerateMiniMap()
     {
-        _graphview = new DialogueGraphView
-        {
-            name = "Dialogue Graph"
-        };
-
-        _graphview.StretchToParentSize();
-        rootVisualElement.Add(_graphview);
+        var minimap = new MiniMap { anchored = true };
+        minimap.SetPosition(new Rect(10, 30, 200, 140));
+        _graphView.Add(minimap);
     }
 
-    private void GenerateToolbar()
+    public void GenerateToolbar()
     {
         var toolbar = new Toolbar();
 
-        //file name set
+        //Graph name
         var fileNameTextField = new TextField("File Name");
         fileNameTextField.SetValueWithoutNotify(_fileName);
         fileNameTextField.MarkDirtyRepaint();
@@ -49,9 +42,9 @@ public class DialogueGraph : EditorWindow
 
         //create node button 
         //todo: change this to a dropdown later for other node types
-        var nodeCreateButton = new Button(clickEvent: () => { _graphview.CreateNode("Dialogue Node"); });
-        nodeCreateButton.text = "Create Node";
-        toolbar.Add(nodeCreateButton);
+        //var nodeCreateButton = new Button(clickEvent: () => { _graphView.CreateNode("Dialogue Node"); });
+        //nodeCreateButton.text = "Create Node";
+        //toolbar.Add(nodeCreateButton);
 
         rootVisualElement.Add(toolbar);
     }
@@ -64,24 +57,27 @@ public class DialogueGraph : EditorWindow
             return;
         }
 
-        var saveUtility = GraphSaveUtility.GetInstance(_graphview);
+        //var saveUtility = GraphSaveUtility.GetInstance(_graphView);
 
-        if (save)
-        {
-            saveUtility.SaveGraph(_fileName);
-        }
-        else
-        {
-            saveUtility.LoadGraph(_fileName);
-        }
+        //if (save)
+        //{
+        //    saveUtility.SaveGraph(_fileName);
+        //}
+        //else
+        //{
+        //    saveUtility.LoadGraph(_fileName);
+        //}
     }
 
-    private void GenerateMiniMap()
+    private void ContructGraphView()
     {
-        var minimap = new MiniMap { anchored = true };
-        minimap.SetPosition(new Rect(10, 30, 200, 140));
-        _graphview.Add(minimap);
+        _graphView = new DialogueGraphView
+        {
+            name = "Dialogue Graph"
+        };
 
+        _graphView.StretchToParentSize();
+        rootVisualElement.Add(_graphView);
     }
 
     private void OnEnable()
@@ -93,6 +89,6 @@ public class DialogueGraph : EditorWindow
 
     private void OnDisable()
     {
-        rootVisualElement.Remove(_graphview);
+        rootVisualElement.Remove(_graphView);
     }
 }
