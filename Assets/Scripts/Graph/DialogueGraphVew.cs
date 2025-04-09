@@ -12,6 +12,7 @@ using UnityEngine.UIElements;
 
 public class DialogueGraphView : GraphView
 {
+    public EntryPointNode _entryPoint;
     public readonly Vector2 defaultNodeSize = new Vector2(150, 200);
     public DialogueGraphView()
     {
@@ -26,6 +27,7 @@ public class DialogueGraphView : GraphView
         Insert(0, grid);
         grid.StretchToParentSize();
 
-        //AddElement(GenerateEntryPointNode());
+        _entryPoint = new EntryPointNode { };
+        AddElement(_entryPoint.GenerateEntryPointNode());
     }
 }
