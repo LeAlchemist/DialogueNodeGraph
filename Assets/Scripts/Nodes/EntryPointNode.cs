@@ -1,19 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
-using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class EntryPointNode
+public class EntryPointNode : CustomNode
 {
-    public CustomNode _node;
-    public CustomNode GenerateEntryPointNode()
+    public CustomNode GenerateNode()
     {
         var node = new CustomNode
         {
@@ -23,8 +14,8 @@ public class EntryPointNode
             entryPoint = true
         };
 
-        _node = new CustomNode { };
-        var generatedPort = _node.GeneratePort(node, Direction.Output);
+
+        var generatedPort = GeneratePort(node, Direction.Output);
         generatedPort.portName = "Next";
         node.outputContainer.Add(generatedPort);
 

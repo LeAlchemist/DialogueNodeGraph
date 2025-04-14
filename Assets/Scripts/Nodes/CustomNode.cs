@@ -1,21 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net;
-using System.Text;
-using UnityEditor;
 using UnityEditor.Experimental.GraphView;
-using UnityEngine;
 using UnityEngine.UIElements;
 
 public class CustomNode : Node
 {
     public string GUID;
     public string NodeType;
-    public string dialogueText;
+    //Notates if the node is an entry point
     public bool entryPoint = false;
+    public string dialogueText;
+
     public DialogueGraphView _graphView;
 
     public Port GeneratePort(CustomNode node, Direction portDirection, Port.Capacity capacity = Port.Capacity.Single)

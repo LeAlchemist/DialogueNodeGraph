@@ -28,6 +28,6 @@ public class DialogueGraphView : GraphView
         grid.StretchToParentSize();
 
         _entryPoint = new EntryPointNode { };
-        AddElement(_entryPoint.GenerateEntryPointNode());
+        AddElement(_entryPoint.GenerateNode());
     }
 }
