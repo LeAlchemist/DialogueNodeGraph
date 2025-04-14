@@ -7,6 +7,7 @@ using UnityEditor.UIElements;
 public class DialogueGraph : EditorWindow
 {
     private DialogueGraphView _graphView;
+    private DialogueNode _dialogueNode;
     public string _fileName = "New Narrative";
 
     [MenuItem("Graph/New Dialogue Graph")]
@@ -42,9 +43,10 @@ public class DialogueGraph : EditorWindow
 
         //create node button 
         //todo: change this to a dropdown later for other node types
-        //var nodeCreateButton = new Button(clickEvent: () => { _graphView.CreateNode("Dialogue Node"); });
-        //nodeCreateButton.text = "Create Node";
-        //toolbar.Add(nodeCreateButton);
+        _dialogueNode = new DialogueNode { };
+        var nodeCreateButton = new Button(clickEvent: () => { _graphView.AddElement(_dialogueNode.GenerateNode()); });
+        nodeCreateButton.text = "Dialogue Node";
+        toolbar.Add(nodeCreateButton);
 
         rootVisualElement.Add(toolbar);
     }
