@@ -20,7 +20,6 @@ public class EntryPointNode
             title = "Start",
             GUID = Guid.NewGuid().ToString(),
             NodeType = "Entry",
-            dialogueText = "Entry Point",
             entryPoint = true
         };
 

@@ -89,7 +89,6 @@ public class DialogueGraph : EditorWindow
 
     private void OnDisable()
     {
-        _graphView = new DialogueGraphView { };
         rootVisualElement.Remove(_graphView);
     }
 }
