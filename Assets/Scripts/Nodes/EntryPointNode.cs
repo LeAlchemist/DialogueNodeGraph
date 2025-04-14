@@ -20,6 +20,7 @@ public class EntryPointNode : CustomNode
         node.outputContainer.Add(generatedPort);
 
         node.capabilities &= ~Capabilities.Movable;
+        node.capabilities &= ~Capabilities.Deletable;
 
         node.RefreshExpandedState();
         node.RefreshPorts();

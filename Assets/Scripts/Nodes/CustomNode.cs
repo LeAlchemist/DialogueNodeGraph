@@ -9,7 +9,6 @@ public class CustomNode : Node
     //Notates if the node is an entry point
     public bool entryPoint = false;
     public string dialogueText;
-
     public DialogueGraphView _graphView;
 
     public Port GeneratePort(CustomNode node, Direction portDirection, Port.Capacity capacity = Port.Capacity.Single)
