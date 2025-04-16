@@ -25,6 +25,10 @@ public class CharacterNode : CustomNode
 
         node.styleSheets.Add(Resources.Load<StyleSheet>("Node"));
 
+        var label = new Label();
+        label.text = "Character Name:";
+        node.inputContainer.Add(label);
+
         var nameTextField = new TextField(string.Empty);
         nameTextField.multiline = true;
         nameTextField.maxLength = 150;

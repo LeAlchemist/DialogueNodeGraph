@@ -9,6 +9,7 @@ public class DialogueGraph : EditorWindow
     private DialogueGraphView _graphView;
     private DialogueNode _dialogueNode;
     private CharacterNode _characterNode;
+    private PortraitNode _portraitNode;
     public string _fileName = "New Narrative";
 
     [MenuItem("Graph/Dialogue Graph")]
@@ -50,6 +51,9 @@ public class DialogueGraph : EditorWindow
 
         _characterNode = new CharacterNode { };
         toolbar.Add(new Button(clickEvent: () => { _graphView.AddElement(_characterNode.GenerateNode()); }) { name = "CharacterNodeButton", text = "Character Node", tooltip = "This node holds the character information" });
+
+        _portraitNode = new PortraitNode { };
+        toolbar.Add(new Button(clickEvent: () => { _graphView.AddElement(_portraitNode.GenerateNode()); }) { name = "PortraitNodeButton", text = "Portrait Node", tooltip = "This node holds the character portrait information" });
 
         rootVisualElement.Add(toolbar);
     }

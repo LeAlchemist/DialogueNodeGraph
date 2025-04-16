@@ -39,6 +39,10 @@ public class DialogueNode : CustomNode
         button.text = "New Choice";
         node.titleContainer.Add(button);
 
+        var label = new Label();
+        label.text = "Dialogue:";
+        node.mainContainer.Add(label);
+
         var textField = new TextField(string.Empty);
         textField.multiline = true;
         textField.maxLength = 150;
