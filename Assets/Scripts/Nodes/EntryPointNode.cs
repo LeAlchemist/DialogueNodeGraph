@@ -1,6 +1,7 @@
 using System;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class EntryPointNode : CustomNode
 {
@@ -14,6 +15,7 @@ public class EntryPointNode : CustomNode
             entryPoint = true
         };
 
+        node.styleSheets.Add(Resources.Load<StyleSheet>("Node"));
 
         var generatedPort = GeneratePort(node, Direction.Output);
         generatedPort.portName = "Next";
