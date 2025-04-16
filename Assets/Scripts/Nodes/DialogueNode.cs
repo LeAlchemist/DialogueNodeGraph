@@ -30,6 +30,10 @@ public class DialogueNode : CustomNode
         inputPort.portName = "Input";
         node.inputContainer.Add(inputPort);
 
+        var characterPort = GeneratePort(node, Direction.Input);
+        characterPort.portName = "Character";
+        node.inputContainer.Add(characterPort);
+
         //Add choices
         var button = new Button(() => { AddChoicePort(node); });
         button.text = "New Choice";
