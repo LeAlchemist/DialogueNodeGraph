@@ -12,9 +12,10 @@ using UnityEngine.UIElements;
 
 public class DialogueNode : CustomNode
 {
-    public CustomNode GenerateNode()
+    public string dialogueText;
+    public DialogueNode GenerateNode()
     {
-        var node = new CustomNode
+        var node = new DialogueNode
         {
             title = "Dialogue Node",
             GUID = Guid.NewGuid().ToString(),

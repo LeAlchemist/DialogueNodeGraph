@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EntryPointNode : CustomNode
 {
-    public CustomNode GenerateNode()
+    public EntryPointNode GenerateNode()
     {
-        var node = new CustomNode
+        var node = new EntryPointNode
         {
             title = "Start",
             GUID = Guid.NewGuid().ToString(),
