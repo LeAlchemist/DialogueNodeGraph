@@ -1,8 +1,4 @@
-CustomNode #title
+DialogueNode #title
 {
     background-color: rgb(0, 128, 0);
-}
-CustomNode #dialogueText
-{
-    background-color: rgb(128, 0, 0);
 }

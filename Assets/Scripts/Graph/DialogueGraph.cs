@@ -10,7 +10,7 @@ public class DialogueGraph : EditorWindow
     private DialogueNode _dialogueNode;
     public string _fileName = "New Narrative";
 
-    [MenuItem("Graph/New Dialogue Graph")]
+    [MenuItem("Graph/Dialogue Graph")]
     public static void OpenDialogueGraphWindow()
     {
         var window = GetWindow<DialogueGraph>();
@@ -27,6 +27,7 @@ public class DialogueGraph : EditorWindow
     public void GenerateToolbar()
     {
         var toolbar = new Toolbar();
+        toolbar.styleSheets.Add(Resources.Load<StyleSheet>("DialogueGraph"));
 
         //Graph name
         var fileNameTextField = new TextField("File Name");
@@ -44,9 +45,7 @@ public class DialogueGraph : EditorWindow
         //create node button 
         //todo: change this to a dropdown later for other node types
         _dialogueNode = new DialogueNode { };
-        var nodeCreateButton = new Button(clickEvent: () => { _graphView.AddElement(_dialogueNode.GenerateNode()); });
-        nodeCreateButton.text = "Dialogue Node";
-        toolbar.Add(nodeCreateButton);
+        toolbar.Add(new Button(clickEvent: () => { _graphView.AddElement(_dialogueNode.GenerateNode()); }) { name = "DialogueNodeButton", text = "Dialogue Node", tooltip = "This node holds the onscreen dialogue" });
 
         rootVisualElement.Add(toolbar);
     }
