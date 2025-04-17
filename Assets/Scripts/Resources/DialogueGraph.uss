@@ -12,3 +12,7 @@ GridBackground {
 #CharacterNodeButton{
     background-color: rgb(0, 132, 255);
 }
+
+#PortraitNodeButton{
+    background-color: rgb(0, 132, 255);
+}
