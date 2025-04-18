@@ -4,10 +4,6 @@ using UnityEngine;
 public class DebugLogNode : ActionNode
 {
     public string message;
-    protected override void OnDestroy()
-    {
-        Debug.Log($"OnDestroy{message}");
-    }
 
     protected override void OnStart()
     {
