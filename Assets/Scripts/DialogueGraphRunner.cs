@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class DialogueTreeRunner : MonoBehaviour
+public class DialogueGraphRunner : MonoBehaviour
 {
-    public DialogueTree _dialogueTree;
+    public DialogueGraph _graph;
 
 
     void Start()
@@ -13,6 +13,6 @@ public class DialogueTreeRunner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _dialogueTree.Update();
+        _graph.Update();
     }
 }
