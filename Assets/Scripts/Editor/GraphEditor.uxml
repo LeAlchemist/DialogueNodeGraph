@@ -1,4 +1,11 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Scripts/Editor/GraphEditor.uss?fileID=7433441132597879392&amp;guid=0deb8c20146035544b7ec5c158dd89d9&amp;type=3#GraphEditor" />
-    <GraphEditorView style="flex-grow: 1;" />
+    <SplitView>
+        <ui:VisualElement name="left-panel" style="flex-grow: 1;">
+            <InspectorView />
+        </ui:VisualElement>
+        <ui:VisualElement name="right-panel" style="flex-grow: 1;">
+            <GraphEditorView style="flex-grow: 1;" />
+        </ui:VisualElement>
+    </SplitView>
 </ui:UXML>

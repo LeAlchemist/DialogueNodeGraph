@@ -5,6 +5,7 @@ using UnityEditor;
 
 public class GraphEditorView : GraphView
 {
+    [System.Obsolete]
     public new class UxmlFactory : UxmlFactory<GraphEditorView, GraphView.UxmlTraits> { }
     public GraphEditorView()
     {
