@@ -9,6 +9,12 @@ public class GraphEditorView : GraphView
     public GraphEditorView()
     {
         Insert(0, new GridBackground());
+
+        this.AddManipulator(new ContentZoomer());
+        this.AddManipulator(new ContentDragger());
+        this.AddManipulator(new SelectionDragger());
+        this.AddManipulator(new RectangleSelector());
+
         //Import USS
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Scripts/Editor/GraphEditor.uss");
         styleSheets.Add(styleSheet);
