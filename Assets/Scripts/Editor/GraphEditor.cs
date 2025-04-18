@@ -29,6 +29,8 @@ public class GraphEditor : EditorWindow
 
         _view = root.Q<GraphEditorView>();
         _inspector = root.Q<InspectorView>();
+
+        OnSelectionChange();
     }
 
     private void OnSelectionChange()

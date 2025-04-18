@@ -12,6 +12,7 @@ public abstract class Node : ScriptableObject
     public State state = State.Running;
     public bool started = false;
     public string guid;
+    public Vector2 position;
 
     public State Update()
     {
@@ -33,6 +34,5 @@ public abstract class Node : ScriptableObject
     }
     protected abstract void OnStart();
     protected abstract void OnStop();
-    protected abstract void OnDestroy();
     protected abstract State OnUpdate();
 }
