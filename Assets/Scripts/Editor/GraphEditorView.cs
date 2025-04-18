@@ -27,9 +27,28 @@ public class GraphEditorView : GraphView
     {
         this._graph = graph;
 
+        graphViewChanged -= OnGraphViewChanged;
         DeleteElements(graphElements);
+        graphViewChanged += OnGraphViewChanged;
 
         graph.nodes.ForEach(n => CreateNodeView(n));
+    }
+
+    private GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange)
+    {
+        if (graphViewChange.elementsToRemove != null)
+        {
+            graphViewChange.elementsToRemove.ForEach(elem =>
+            {
+                NodeView nodeView = elem as NodeView;
+                if (nodeView != null)
+                {
+                    _graph.DeleteNode(nodeView.node);
+                }
+            });
+        }
+
+        return graphViewChange;
     }
 
     public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
