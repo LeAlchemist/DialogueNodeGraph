@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Dialogue Node Graph.sln"
+    "dotnet.defaultSolution": "DialogueNodeGraph.sln"
 }
