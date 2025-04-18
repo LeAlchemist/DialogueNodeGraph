@@ -1,2 +1,2 @@
-# Unity3DVisualNovelUI
+# Dialogue Node Graph
 This is prototype code for a future project
