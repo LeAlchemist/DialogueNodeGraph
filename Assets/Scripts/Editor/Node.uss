@@ -1,0 +1,23 @@
+.node #title-label{
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+}
+
+/*colors for broad groups of nodes*/
+.action #title{
+    background-color: rgb(0, 90, 15);
+}
+
+.composite #title{
+    background-color: rgb(4, 0, 255);
+}
+
+.decorator #title{
+    background-color: rgb(105, 0, 91);
+}
+
+
+/*colors for individual nodes*/
+.DebugLogNode #title{
+    background-color: rgb(255, 0, 0);
+}
