@@ -104,8 +104,10 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
     public override void SetPosition(Rect newPos)
     {
         base.SetPosition(newPos);
+        Undo.RecordObject(node, "Dialogue Graph (Set Position)");
         node.position.x = newPos.xMin;
         node.position.y = newPos.yMin;
+        EditorUtility.SetDirty(node);
     }
 
     public override void OnSelected()

@@ -24,6 +24,14 @@ public class GraphEditorView : GraphView
         //Import USS
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Scripts/Editor/GraphEditor.uss");
         styleSheets.Add(styleSheet);
+
+        Undo.undoRedoPerformed += OnUndoRedo;
+    }
+
+    private void OnUndoRedo()
+    {
+        Populateview(_graph);
+        AssetDatabase.SaveAssets();
     }
 
     NodeView FindNodeView(Node node)

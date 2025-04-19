@@ -20,20 +20,24 @@ public class DialogueGraph : ScriptableObject
         return graphState;
     }
 
+#if UNITY_EDITOR
     public Node CreateNode(System.Type type)
     {
         Node node = ScriptableObject.CreateInstance(type) as Node;
         node.name = type.Name;
         node.guid = GUID.Generate().ToString();
+        Undo.RecordObject(node, "Dialogue Graph (Create Node)");
         nodes.Add(node);
 
         AssetDatabase.AddObjectToAsset(node, this);
+        Undo.RegisterCreatedObjectUndo(node, "Dialogue Graph (Create Node)");
         AssetDatabase.SaveAssets();
         return node;
     }
 
     public void DeleteNode(Node node)
     {
+        Undo.RecordObject(node, "Dialogue Graph (Delete Node)");
         nodes.Remove(node);
         AssetDatabase.RemoveObjectFromAsset(node);
         AssetDatabase.SaveAssets();
@@ -44,19 +48,25 @@ public class DialogueGraph : ScriptableObject
         DecoratorNode decorator = parent as DecoratorNode;
         if (decorator)
         {
+            Undo.RecordObject(decorator, "Dialogue Graph (Add Child)");
             decorator.child = Child;
+            EditorUtility.SetDirty(decorator);
         }
 
         CompositeNode composite = parent as CompositeNode;
         if (composite)
         {
+            Undo.RecordObject(composite, "Dialogue Graph (Add Child)");
             composite.children.Add(Child);
+            EditorUtility.SetDirty(composite);
         }
 
         RootNode root = parent as RootNode;
         if (root)
         {
+            Undo.RecordObject(root, "Dialogue Graph (Add Child)");
             root.child = Child;
+            EditorUtility.SetDirty(root);
         }
 
     }
@@ -66,19 +76,25 @@ public class DialogueGraph : ScriptableObject
         DecoratorNode decorator = parent as DecoratorNode;
         if (decorator)
         {
+            Undo.RecordObject(decorator, "Dialogue Graph (Remove Child)");
             decorator.child = null;
+            EditorUtility.SetDirty(decorator);
         }
 
         CompositeNode composite = parent as CompositeNode;
         if (composite)
         {
+            Undo.RecordObject(composite, "Dialogue Graph (Remove Child)");
             composite.children.Remove(Child);
+            EditorUtility.SetDirty(composite);
         }
 
         RootNode root = parent as RootNode;
         if (root)
         {
+            Undo.RecordObject(root, "Dialogue Graph (Remove Child)");
             root.child = null;
+            EditorUtility.SetDirty(root);
         }
     }
 
@@ -90,6 +106,7 @@ public class DialogueGraph : ScriptableObject
         if (decorator && decorator.child != null)
         {
             children.Add(decorator.child);
+            EditorUtility.SetDirty(decorator);
         }
 
         CompositeNode composite = parent as CompositeNode;
@@ -102,10 +119,12 @@ public class DialogueGraph : ScriptableObject
         if (root && root.child != null)
         {
             children.Add(root.child);
+            EditorUtility.SetDirty(root);
         }
 
         return children;
     }
+#endif
 
     public DialogueGraph Clone()
     {

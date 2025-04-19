@@ -16,8 +16,7 @@
     background-color: rgb(105, 0, 91);
 }
 
-
 /*colors for individual nodes*/
-.DebugLogNode #title{
+.DebugLog #title{
     background-color: rgb(255, 0, 0);
 }
