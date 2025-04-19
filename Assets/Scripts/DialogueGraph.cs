@@ -29,7 +29,10 @@ public class DialogueGraph : ScriptableObject
         Undo.RecordObject(node, "Dialogue Graph (Create Node)");
         nodes.Add(node);
 
-        AssetDatabase.AddObjectToAsset(node, this);
+        if (!Application.isPlaying)
+        {
+            AssetDatabase.AddObjectToAsset(node, this);
+        }
         Undo.RegisterCreatedObjectUndo(node, "Dialogue Graph (Create Node)");
         AssetDatabase.SaveAssets();
         return node;
@@ -126,10 +129,25 @@ public class DialogueGraph : ScriptableObject
     }
 #endif
 
+    public void Traverse(Node node, System.Action<Node> visitor)
+    {
+        if (node)
+        {
+            visitor.Invoke(node);
+            var children = GetChildren(node);
+            children.ForEach((n) => Traverse(n, visitor));
+        }
+    }
+
     public DialogueGraph Clone()
     {
         DialogueGraph graph = Instantiate(this);
         graph.rootNode = graph.rootNode.Clone();
+        graph.nodes = new List<Node>();
+        Traverse(graph.rootNode, (n) =>
+        {
+            graph.nodes.Add(n);
+        });
         return graph;
     }
 }

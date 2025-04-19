@@ -2,6 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.Callbacks;
+using System;
 
 public class GraphEditor : EditorWindow
 {
@@ -47,9 +48,57 @@ public class GraphEditor : EditorWindow
         OnSelectionChange();
     }
 
+    private void OnEnable()
+    {
+        EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+        EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+    }
+
+    private void OnDisable()
+    {
+        EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+    }
+
+    private void OnPlayModeStateChanged(PlayModeStateChange obj)
+    {
+        switch (obj)
+        {
+            case PlayModeStateChange.EnteredEditMode:
+                OnSelectionChange();
+                break;
+            case PlayModeStateChange.ExitingEditMode:
+                break;
+            case PlayModeStateChange.EnteredPlayMode:
+                OnSelectionChange();
+                break;
+            case PlayModeStateChange.ExitingPlayMode:
+                break;
+        }
+    }
+
     private void OnSelectionChange()
     {
         DialogueGraph _graph = Selection.activeObject as DialogueGraph;
+        if (!_graph)
+        {
+            if (Selection.activeGameObject)
+            {
+                DialogueGraphRunner runner = Selection.activeGameObject.GetComponent<DialogueGraphRunner>();
+                if (runner)
+                {
+                    _graph = runner._graph;
+                }
+            }
+        }
+
+        if (Application.isPlaying)
+        {
+            if (_graph)
+            {
+                _view.Populateview(_graph);
+            }
+        }
+        else
         {
             if (_graph && AssetDatabase.CanOpenAssetInEditor(_graph.GetInstanceID()))
             {
