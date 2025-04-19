@@ -38,4 +38,53 @@ public class DialogueGraph : ScriptableObject
         AssetDatabase.RemoveObjectFromAsset(node);
         AssetDatabase.SaveAssets();
     }
+
+    public void AddChild(Node parent, Node Child)
+    {
+        DecoratorNode decorator = parent as DecoratorNode;
+        if (decorator)
+        {
+            decorator.child = Child;
+        }
+
+        CompositeNode composite = parent as CompositeNode;
+        if (composite)
+        {
+            composite.children.Add(Child);
+        }
+    }
+
+    public void RemoveChild(Node parent, Node Child)
+    {
+        DecoratorNode decorator = parent as DecoratorNode;
+        if (decorator)
+        {
+            decorator.child = null;
+        }
+
+        CompositeNode composite = parent as CompositeNode;
+        if (composite)
+        {
+            composite.children.Remove(Child);
+        }
+    }
+
+    public List<Node> GetChildren(Node parent)
+    {
+        List<Node> children = new List<Node>();
+
+        DecoratorNode decorator = parent as DecoratorNode;
+        if (decorator && decorator.child != null)
+        {
+            children.Add(decorator.child);
+        }
+
+        CompositeNode composite = parent as CompositeNode;
+        if (composite)
+        {
+            return composite.children;
+        }
+
+        return children;
+    }
 }
