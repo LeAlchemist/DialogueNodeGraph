@@ -3,21 +3,31 @@ using UnityEngine;
 
 public class DebugLogNode : ActionNode
 {
+    public bool onStart, onStop, onUpdate;
     public string message;
 
     protected override void OnStart()
     {
-        Debug.Log($"OnStart{message}");
+        if (onStart)
+        {
+            Debug.Log($"OnStart {message}");
+        }
     }
 
     protected override void OnStop()
     {
-        Debug.Log($"OnStop{message}");
+        if (onStop)
+        {
+            Debug.Log($"OnStop {message}");
+        }
     }
 
     protected override State OnUpdate()
     {
-        Debug.Log($"OnUpdate{message}");
+        if (onUpdate)
+        {
+            Debug.Log($"OnUpdate {message}");
+        }
         return State.Success;
     }
 }
