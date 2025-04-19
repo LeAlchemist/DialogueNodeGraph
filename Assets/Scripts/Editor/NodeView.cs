@@ -1,4 +1,5 @@
 using System;
+using Codice.CM.Common;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -117,5 +118,19 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
         {
             OnNodeSelected.Invoke(this);
         }
+    }
+
+    public void SortChildren()
+    {
+        CompositeNode composite = node as CompositeNode;
+        if (composite)
+        {
+            composite.children.Sort(SortByPosition);
+        }
+    }
+
+    private int SortByPosition(Node x, Node y)
+    {
+        return x.position.y < y.position.y ? -1 : 1;
     }
 }

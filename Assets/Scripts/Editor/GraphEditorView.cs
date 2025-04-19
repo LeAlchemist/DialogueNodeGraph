@@ -109,6 +109,21 @@ public class GraphEditorView : GraphView
                 NodeView childView = edge.input.node as NodeView;
                 _graph.AddChild(parentView.node, childView.node);
             });
+
+            nodes.ForEach((n) =>
+            {
+                NodeView view = n as NodeView;
+                view.SortChildren();
+            });
+        }
+
+        if (graphViewChange.movedElements != null)
+        {
+            nodes.ForEach((n) =>
+            {
+                NodeView view = n as NodeView;
+                view.SortChildren();
+            });
         }
 
         return graphViewChange;
