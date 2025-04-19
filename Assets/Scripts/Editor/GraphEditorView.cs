@@ -8,6 +8,7 @@ using System.Collections.Generic;
 
 public class GraphEditorView : GraphView
 {
+    public Action<NodeView> OnNodeSelected;
     [System.Obsolete]
     public new class UxmlFactory : UxmlFactory<GraphEditorView, GraphView.UxmlTraits> { }
     DialogueGraph _graph;
@@ -136,6 +137,7 @@ public class GraphEditorView : GraphView
     void CreateNodeView(Node node)
     {
         NodeView nodeView = new NodeView(node);
+        nodeView.OnNodeSelected = OnNodeSelected;
         AddElement(nodeView);
     }
 }

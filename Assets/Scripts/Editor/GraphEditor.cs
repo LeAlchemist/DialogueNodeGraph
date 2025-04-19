@@ -4,6 +4,7 @@ using UnityEngine.UIElements;
 
 public class GraphEditor : EditorWindow
 {
+
     GraphEditorView _view;
     InspectorView _inspector;
 
@@ -29,6 +30,7 @@ public class GraphEditor : EditorWindow
 
         _view = root.Q<GraphEditorView>();
         _inspector = root.Q<InspectorView>();
+        _view.OnNodeSelected = OnNodeSelectionChanged;
 
         OnSelectionChange();
     }
@@ -42,5 +44,10 @@ public class GraphEditor : EditorWindow
                 _view.Populateview(_graph);
             }
         }
+    }
+
+    void OnNodeSelectionChanged(NodeView nodeView)
+    {
+        _inspector.UpdateSelection(nodeView);
     }
 }
