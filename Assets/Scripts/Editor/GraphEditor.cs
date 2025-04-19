@@ -1,6 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEditor.Callbacks;
 
 public class GraphEditor : EditorWindow
 {
@@ -13,6 +14,17 @@ public class GraphEditor : EditorWindow
     {
         GraphEditor wnd = GetWindow<GraphEditor>();
         wnd.titleContent = new GUIContent("GraphEditor");
+    }
+
+    [OnOpenAsset]
+    public static bool OnOpenAsset(int instanceId, int line)
+    {
+        if (Selection.activeObject is DialogueGraph)
+        {
+            OpenWindow();
+            return true;
+        }
+        return false;
     }
 
     public void CreateGUI()
