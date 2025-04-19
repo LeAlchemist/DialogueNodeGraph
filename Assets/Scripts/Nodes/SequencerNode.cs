@@ -1,6 +1,10 @@
 public class SequencerNode : CompositeNode
 {
     int current;
+    public SequencerNode()
+    {
+        description = "Plays connected nodes in the order they are connected";
+    }
 
     protected override void OnStart()
     {

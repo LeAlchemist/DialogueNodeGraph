@@ -5,6 +5,11 @@ public class DebugLogNode : ActionNode
     public bool onStart, onStop, onUpdate;
     public string message;
 
+    public DebugLogNode()
+    {
+        description = "Displays custom debug messages";
+    }
+
     protected override void OnStart()
     {
         if (onStart)

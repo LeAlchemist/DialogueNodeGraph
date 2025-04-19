@@ -1,5 +1,9 @@
 public class RepeatNode : DecoratorNode
 {
+    public RepeatNode()
+    {
+        description = "Plays the sequence of connected nodes over and over";
+    }
     protected override void OnStart()
     {
 

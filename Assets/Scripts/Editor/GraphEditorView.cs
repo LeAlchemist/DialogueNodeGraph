@@ -4,6 +4,7 @@ using UnityEditor;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class GraphEditorView : GraphView
 {
@@ -135,7 +136,7 @@ public class GraphEditorView : GraphView
             var types = TypeCache.GetTypesDerivedFrom<ActionNode>();
             foreach (var type in types)
             {
-                evt.menu.AppendAction($"[{type.BaseType.Name.Replace("Node", "")}] {type.Name.Replace("Node", "")}", (a) => CreateNode(type));
+                evt.menu.AppendAction($"{type.BaseType.Name.Replace("Node", "")}/{type.Name.Replace("Node", "")}", (a) => CreateNode(type));
             }
         }
 
@@ -143,7 +144,7 @@ public class GraphEditorView : GraphView
             var types = TypeCache.GetTypesDerivedFrom<CompositeNode>();
             foreach (var type in types)
             {
-                evt.menu.AppendAction($"[{type.BaseType.Name.Replace("Node", "")}] {type.Name.Replace("Node", "")}", (a) => CreateNode(type));
+                evt.menu.AppendAction($"{type.BaseType.Name.Replace("Node", "")}/{type.Name.Replace("Node", "")}", (a) => CreateNode(type));
             }
         }
 
@@ -151,7 +152,7 @@ public class GraphEditorView : GraphView
             var types = TypeCache.GetTypesDerivedFrom<DecoratorNode>();
             foreach (var type in types)
             {
-                evt.menu.AppendAction($"[{type.BaseType.Name.Replace("Node", "")}] {type.Name.Replace("Node", "")}", (a) => CreateNode(type));
+                evt.menu.AppendAction($"{type.BaseType.Name.Replace("Node", "")}/{type.Name.Replace("Node", "")}", (a) => CreateNode(type));
             }
         }
     }

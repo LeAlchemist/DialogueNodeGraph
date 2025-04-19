@@ -17,6 +17,8 @@ public abstract class Node : ScriptableObject
     public string guid;
     [HideInInspector]
     public Vector2 position;
+    [HideInInspector]
+    public string description;
 
     public State Update()
     {

@@ -4,6 +4,11 @@ public class RootNode : Node
 {
     [HideInInspector]
     public Node child;
+
+    public RootNode()
+    {
+        description = "This is where it all starts";
+    }
     protected override void OnStart()
     {
 

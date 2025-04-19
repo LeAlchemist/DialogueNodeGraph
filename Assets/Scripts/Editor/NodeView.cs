@@ -1,8 +1,10 @@
 using System;
 using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Unity.VisualScripting;
 
 public class NodeView : UnityEditor.Experimental.GraphView.Node
 {
@@ -24,6 +26,7 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Scripts/Editor/Node.uss");
         styleSheets.Add(styleSheet);
 
+        SetDescription();
         CreateInputPorts();
         CreateOutputPorts();
         SetupClasses();
@@ -50,6 +53,12 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
                 AddToClassList(this.title);
                 break;
         }
+    }
+
+    private void SetDescription()
+    {
+        var description = new Label(node.description);
+        mainContainer.Add(description);
     }
 
     private void CreateInputPorts()
