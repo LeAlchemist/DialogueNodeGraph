@@ -7,7 +7,7 @@ public class DialogueGraphRunner : MonoBehaviour
 
     void Start()
     {
-
+        _graph = _graph.Clone();
     }
 
     // Update is called once per frame

@@ -39,6 +39,13 @@ public class GraphEditorView : GraphView
         DeleteElements(graphElements);
         graphViewChanged += OnGraphViewChanged;
 
+        if (graph.rootNode == null)
+        {
+            graph.rootNode = graph.CreateNode(typeof(RootNode)) as RootNode;
+            EditorUtility.SetDirty(graph);
+            AssetDatabase.SaveAssets();
+        }
+
         //creates node views
         graph.nodes.ForEach(n => CreateNodeView(n));
 

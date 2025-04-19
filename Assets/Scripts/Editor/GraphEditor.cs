@@ -39,7 +39,7 @@ public class GraphEditor : EditorWindow
     {
         DialogueGraph _graph = Selection.activeObject as DialogueGraph;
         {
-            if (_graph)
+            if (_graph && AssetDatabase.CanOpenAssetInEditor(_graph.GetInstanceID()))
             {
                 _view.Populateview(_graph);
             }
