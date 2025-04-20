@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6393536668933901315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3145b2b35c1c62545939028b350abded, type: 3}
+  m_Name: DialogueNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 193abd138f3b99240957f4a1be409b5a
+  position: {x: 0, y: 0}
+  description: This holds dialogue
+  scale: {x: 250, y: 750}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b760d76ce874a24dbc8f11d85988d0b, type: 3}
+  m_Name: SampleGraph
+  m_EditorClassIdentifier: 
+  rootNode: {fileID: 4657669097298260432}
+  graphState: 0
+  nodes:
+  - {fileID: 4657669097298260432}
+  - {fileID: 1494564442361007957}
+  - {fileID: -6393536668933901315}
+--- !u!114 &1494564442361007957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408b53f925ecc834a81110c0bc098171, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 89d767a01da6dc74997b6e47c7a1378c
+  position: {x: 184.95999, y: 0}
+  description: Plays connected nodes in the order they are connected
+  scale: {x: 250, y: 750}
+  children: []
+--- !u!114 &4657669097298260432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: badd9e609898ed44d85e4a5219709eee, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: b7849f3298dc78c4a8ee087e695cac93
+  position: {x: 0, y: 0}
+  description: This is where it all starts
+  scale: {x: 150, y: 750}
+  child: {fileID: 1494564442361007957}
