@@ -141,4 +141,30 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
     {
         return x.position.y < y.position.y ? -1 : 1;
     }
+
+    public void UpdateStates()
+    {
+        RemoveFromClassList("running");
+        RemoveFromClassList("failure");
+        RemoveFromClassList("success");
+
+        if (Application.isPlaying)
+        {
+            switch (node.state)
+            {
+                case Node.State.Running:
+                    if (node.started)
+                    {
+                        AddToClassList("running");
+                    }
+                    break;
+                case Node.State.Failure:
+                    AddToClassList("failure");
+                    break;
+                case Node.State.Success:
+                    AddToClassList("success");
+                    break;
+            }
+        }
+    }
 }
