@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public abstract class Node : ScriptableObject
@@ -17,6 +18,8 @@ public abstract class Node : ScriptableObject
     public string guid;
     [HideInInspector]
     public Vector2 position;
+    [HideInInspector]
+    public Blackboard blackboard;
     [HideInInspector]
     public string description;
 

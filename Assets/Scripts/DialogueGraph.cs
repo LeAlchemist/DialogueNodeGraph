@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 
 [CreateAssetMenu(menuName = "Dialogue Graph")]
 public class DialogueGraph : ScriptableObject
@@ -8,6 +9,7 @@ public class DialogueGraph : ScriptableObject
     public Node rootNode;
     public Node.State graphState = Node.State.Running;
     public List<Node> nodes = new List<Node>();
+    public Blackboard blackboard = new Blackboard();
 
     public Node.State Update()
     {
