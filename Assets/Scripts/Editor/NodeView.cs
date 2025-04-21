@@ -1,10 +1,8 @@
 using System;
 using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Unity.VisualScripting;
 
 public class NodeView : UnityEditor.Experimental.GraphView.Node
 {
@@ -102,7 +100,6 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
         switch (node)
         {
             case ActionNode:
-
                 break;
             case CompositeNode:
                 output = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(bool));
