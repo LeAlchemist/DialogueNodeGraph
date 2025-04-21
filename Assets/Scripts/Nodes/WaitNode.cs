@@ -17,7 +17,10 @@ public class WaitNode : ActionNode
 
     protected override void OnStop()
     {
-
+        if (loop == true)
+        {
+            loopCount++;
+        }
     }
 
     protected override State OnUpdate()
