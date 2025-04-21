@@ -3,6 +3,27 @@
     font-size: 14px;
 }
 
+.success #node-border{
+    border-top-color:rgb(0, 255, 0);
+    border-bottom-color:rgb(0, 255, 0);
+    border-left-color:rgb(0, 255, 0);
+    border-right-color:rgb(0, 255, 0);
+}
+
+.running #node-border{
+    border-top-color:rgb(255, 255, 0);
+    border-bottom-color:rgb(255, 255, 0);
+    border-left-color:rgb(255, 255, 0);
+    border-right-color:rgb(255, 255, 0);
+}
+
+.failed #node-border{
+    border-top-color:rgb(255, 0, 0);
+    border-bottom-color:rgb(255, 0, 0);
+    border-left-color:rgb(255, 0, 0);
+    border-right-color:rgb(255, 0, 0);
+}
+
 /*colors for broad groups of nodes*/
 .action #title{
     background-color: rgb(0, 90, 15);

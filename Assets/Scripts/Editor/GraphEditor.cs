@@ -110,4 +110,9 @@ public class GraphEditor : EditorWindow
     {
         _inspector.UpdateSelection(nodeView);
     }
+
+    private void OnInspectorUpdate()
+    {
+        _view?.UpdateNodeState();
+    }
 }
