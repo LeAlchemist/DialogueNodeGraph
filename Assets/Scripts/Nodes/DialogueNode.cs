@@ -22,11 +22,15 @@ public class DialogueNode : ActionNode
     protected override void OnStart()
     {
         startTime = Time.time;
+        Debug.Log(dialogue);
     }
 
     protected override void OnStop()
     {
-
+        if (loop == true)
+        {
+            loopCount++;
+        }
     }
 
     protected override State OnUpdate()
