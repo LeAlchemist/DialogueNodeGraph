@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class DialogueNode : ActionNode
 {
     [TextArea]
@@ -20,7 +21,7 @@ public class DialogueNode : ActionNode
 
     protected override void OnStart()
     {
-
+        startTime = Time.time;
     }
 
     protected override void OnStop()
@@ -40,7 +41,6 @@ public class DialogueNode : ActionNode
         {
             return State.Success;
         }
-
         return State.Running;
     }
 
