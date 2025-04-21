@@ -1,5 +1,26 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9188451807102072877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3145b2b35c1c62545939028b350abded, type: 3}
+  m_Name: DialogueNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 5e6b96cd6a5279e468bced706da3a8f8
+  position: {x: 476, y: 120}
+  description: This holds dialogue
+  scale: {x: 250, y: 750}
+  dialogue: 
+  wpm: 100
+  duration: 1
 --- !u!114 &-6393536668933901315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,9 +36,53 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 193abd138f3b99240957f4a1be409b5a
-  position: {x: 0, y: 0}
+  position: {x: 476, y: 0}
   description: This holds dialogue
   scale: {x: 250, y: 750}
+  dialogue: This is the first bit of dialogue, the story starts here and no where
+    else
+  wpm: 100
+  duration: 1
+--- !u!114 &-3173753392326639411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd8886c399f7f945ad22dc49a13f237, type: 3}
+  m_Name: ChoiceNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: acde8708da6f65d40be83e5e4e8d916c
+  position: {x: 0, y: 0}
+  description: This or that
+  scale: {x: 250, y: 750}
+  children: []
+--- !u!114 &-1191562909941933649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3145b2b35c1c62545939028b350abded, type: 3}
+  m_Name: DialogueNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: d2c6c580556cd8449a70d58882f390b7
+  position: {x: 476, y: 241}
+  description: This holds dialogue
+  scale: {x: 250, y: 750}
+  dialogue: 
+  wpm: 100
+  duration: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36,6 +101,9 @@ MonoBehaviour:
   - {fileID: 4657669097298260432}
   - {fileID: 1494564442361007957}
   - {fileID: -6393536668933901315}
+  - {fileID: -9188451807102072877}
+  - {fileID: -1191562909941933649}
+  - {fileID: -3173753392326639411}
 --- !u!114 &1494564442361007957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,7 +122,10 @@ MonoBehaviour:
   position: {x: 184.95999, y: 0}
   description: Plays connected nodes in the order they are connected
   scale: {x: 250, y: 750}
-  children: []
+  children:
+  - {fileID: -6393536668933901315}
+  - {fileID: -9188451807102072877}
+  - {fileID: -1191562909941933649}
 --- !u!114 &4657669097298260432
 MonoBehaviour:
   m_ObjectHideFlags: 0
