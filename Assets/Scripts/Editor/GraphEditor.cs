@@ -2,6 +2,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.Callbacks;
+using System;
+using UnityEditor.Experimental.GraphView;
 
 public class GraphEditor : EditorWindow
 {
@@ -45,6 +47,14 @@ public class GraphEditor : EditorWindow
         _view.OnNodeSelected = OnNodeSelectionChanged;
 
         OnSelectionChange();
+        GenerateMiniMap();
+    }
+
+    private void GenerateMiniMap()
+    {
+        var miniMap = new MiniMap { anchored = true };
+        miniMap.SetPosition(new Rect(10, 30, 200, 140));
+        _view.Add(miniMap);
     }
 
     private void OnEnable()
