@@ -9,11 +9,15 @@ public class SequencerNode : CompositeNode
     protected override void OnStart()
     {
         current = 0;
+
     }
 
     protected override void OnStop()
     {
-
+        if (loop == true)
+        {
+            loopCount++;
+        }
     }
 
     protected override State OnUpdate()
