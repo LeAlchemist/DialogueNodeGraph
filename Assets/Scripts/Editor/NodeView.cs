@@ -165,13 +165,19 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
                     if (node.started)
                     {
                         AddToClassList("running");
+                        RemoveFromClassList("failure");
+                        RemoveFromClassList("success");
                     }
                     break;
                 case Node.State.Failure:
                     AddToClassList("failure");
+                    RemoveFromClassList("running");
+                    RemoveFromClassList("success");
                     break;
                 case Node.State.Success:
                     AddToClassList("success");
+                    RemoveFromClassList("running");
+                    RemoveFromClassList("failure");
                     break;
             }
         }
