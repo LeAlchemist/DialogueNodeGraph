@@ -100,9 +100,10 @@ public class GraphEditor : EditorWindow
             }
         }
 
+#if UNITY_EDITOR
         if (Application.isPlaying)
         {
-            if (_graph)
+            if (_graph != null)
             {
                 _view.Populateview(_graph);
             }
@@ -115,6 +116,7 @@ public class GraphEditor : EditorWindow
             }
         }
     }
+#endif
 
     void OnNodeSelectionChanged(NodeView nodeView)
     {

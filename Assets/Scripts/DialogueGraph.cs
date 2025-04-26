@@ -6,8 +6,10 @@ using UnityEditor;
 public class DialogueGraph : ScriptableObject
 {
     public Node rootNode;
+    public int node = 0;
+    public DialogueNode dialogueNode;
     public Node.State graphState = Node.State.Running;
-    public List<Node> nodes = new List<Node>();
+    public List<Node> nodes = new();
 
     public Node.State Update()
     {
