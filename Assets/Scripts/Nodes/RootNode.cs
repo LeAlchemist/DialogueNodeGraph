@@ -8,6 +8,7 @@ public class RootNode : Node
     public RootNode()
     {
         description = "This is where it all starts";
+        scale.x = 150;
     }
     protected override void OnStart()
     {

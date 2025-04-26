@@ -23,6 +23,14 @@ public abstract class Node : ScriptableObject
     public Vector2 position;
     [HideInInspector]
     public string description;
+    [HideInInspector]
+    public Vector2 scale;
+
+    public Node()
+    {
+        scale.x = 250;
+        scale.y = 750;
+    }
 
     public State Update()
     {

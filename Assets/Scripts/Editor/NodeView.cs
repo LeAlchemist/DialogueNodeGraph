@@ -1,10 +1,8 @@
 using System;
 using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Unity.VisualScripting;
 
 public class NodeView : UnityEditor.Experimental.GraphView.Node
 {
@@ -21,10 +19,22 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
 
         style.left = node.position.x;
         style.top = node.position.y;
+        style.minWidth = node.scale.x;
+        style.maxWidth = node.scale.x;
+        style.maxHeight = node.scale.y;
 
         //Import USS
         var styleSheet = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/Scripts/Editor/Node.uss");
         styleSheets.Add(styleSheet);
+
+
+        switch (node)
+        {
+            case RootNode:
+                capabilities -= Capabilities.Selectable;
+                capabilities -= Capabilities.Deletable;
+                break;
+        }
 
         SetDescription();
         CreateInputPorts();
@@ -58,7 +68,7 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
     private void SetDescription()
     {
         var description = new Label(node.description);
-        mainContainer.Add(description);
+        mainContainer.Insert(1, description);
     }
 
     private void CreateInputPorts()
@@ -90,7 +100,6 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
         switch (node)
         {
             case ActionNode:
-
                 break;
             case CompositeNode:
                 output = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Multi, typeof(bool));
@@ -156,13 +165,19 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
                     if (node.started)
                     {
                         AddToClassList("running");
+                        RemoveFromClassList("failure");
+                        RemoveFromClassList("success");
                     }
                     break;
                 case Node.State.Failure:
                     AddToClassList("failure");
+                    RemoveFromClassList("running");
+                    RemoveFromClassList("success");
                     break;
                 case Node.State.Success:
                     AddToClassList("success");
+                    RemoveFromClassList("running");
+                    RemoveFromClassList("failure");
                     break;
             }
         }

@@ -1,0 +1,233 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8935528698778152540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3145b2b35c1c62545939028b350abded, type: 3}
+  m_Name: DialogueNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 90564a310e7aef447add9c6a085078a3
+  loop: 0
+  loopCount: 0
+  position: {x: 494, y: 272.99997}
+  description: This holds dialogue
+  scale: {x: 250, y: 750}
+  dialogue: This is dialogue node 3
+  wordsPerMinute: 100
+  duration: 1
+--- !u!114 &-5316580862949490224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3145b2b35c1c62545939028b350abded, type: 3}
+  m_Name: DialogueNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 0a447e4524e6daa4e80ff73d3f51e5bb
+  loop: 0
+  loopCount: 0
+  position: {x: 1092.9583, y: 182.00003}
+  description: This holds dialogue
+  scale: {x: 250, y: 750}
+  dialogue: This is a choice after waiting a few seconds
+  wordsPerMinute: 100
+  duration: 1
+--- !u!114 &-2953678234643323501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408b53f925ecc834a81110c0bc098171, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 681b31894a15dd948a292be3266ae35e
+  loop: 0
+  loopCount: 0
+  position: {x: 797.5209, y: -0.000009372787}
+  description: Plays connected nodes in the order they are connected
+  scale: {x: 250, y: 750}
+  children:
+  - {fileID: -5316580862949490224}
+--- !u!114 &-4743378837799962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408b53f925ecc834a81110c0bc098171, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 0708e6df63ac28b4883646bebbe4893d
+  loop: 0
+  loopCount: 0
+  position: {x: 207.32253, y: 0.000002861023}
+  description: Plays connected nodes in the order they are connected
+  scale: {x: 250, y: 750}
+  children:
+  - {fileID: 1073243124666433656}
+  - {fileID: 4085708535751355604}
+  - {fileID: -8935528698778152540}
+  - {fileID: 1195313915047522403}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b760d76ce874a24dbc8f11d85988d0b, type: 3}
+  m_Name: SampleGraph
+  m_EditorClassIdentifier: 
+  rootNode: {fileID: 4657669097298260432}
+  node: 0
+  dialogueNode: {fileID: 0}
+  graphState: 0
+  nodes:
+  - {fileID: 4657669097298260432}
+  - {fileID: -4743378837799962}
+  - {fileID: 1073243124666433656}
+  - {fileID: 4085708535751355604}
+  - {fileID: -8935528698778152540}
+  - {fileID: 1195313915047522403}
+  - {fileID: -2953678234643323501}
+  - {fileID: -5316580862949490224}
+  - {fileID: 4580551647697651602}
+--- !u!114 &1073243124666433656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3145b2b35c1c62545939028b350abded, type: 3}
+  m_Name: DialogueNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 15bc99c88e84ee4478ad4b8425a773e3
+  loop: 0
+  loopCount: 0
+  position: {x: 494, y: 13}
+  description: This holds dialogue
+  scale: {x: 250, y: 750}
+  dialogue: This is dialogue node 1
+  wordsPerMinute: 100
+  duration: 1
+--- !u!114 &1195313915047522403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd8886c399f7f945ad22dc49a13f237, type: 3}
+  m_Name: ChoiceNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 0a9d4532a3023ea47bd93140ad5b80b8
+  loop: 0
+  loopCount: 0
+  position: {x: 494.00006, y: 396.87503}
+  description: This or that
+  scale: {x: 250, y: 750}
+  children:
+  - {fileID: -2953678234643323501}
+  choices: []
+  selection: 0
+--- !u!114 &4085708535751355604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3145b2b35c1c62545939028b350abded, type: 3}
+  m_Name: DialogueNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: c7bb191777b0f5244b001e30c0a480fe
+  loop: 0
+  loopCount: 0
+  position: {x: 494, y: 136}
+  description: This holds dialogue
+  scale: {x: 250, y: 750}
+  dialogue: This is dialogue node 2
+  wordsPerMinute: 100
+  duration: 1
+--- !u!114 &4580551647697651602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 799543231b40c4d40ad1d5bda089e944, type: 3}
+  m_Name: WaitNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: d3615272abdae9f4cae7052429c33f96
+  loop: 0
+  loopCount: 0
+  position: {x: 0, y: 0}
+  description: Will wait x amount of time between playing nodes in a sequence
+  scale: {x: 250, y: 750}
+  duration: 1
+--- !u!114 &4657669097298260432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: badd9e609898ed44d85e4a5219709eee, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: b7849f3298dc78c4a8ee087e695cac93
+  loop: 0
+  loopCount: 0
+  position: {x: 0, y: 0}
+  description: This is where it all starts
+  scale: {x: 150, y: 750}
+  child: {fileID: -4743378837799962}
