@@ -40,7 +40,7 @@ MonoBehaviour:
   guid: 0a447e4524e6daa4e80ff73d3f51e5bb
   loop: 0
   loopCount: 0
-  position: {x: 1092.9583, y: 182.00003}
+  position: {x: 1093.0001, y: 136}
   description: This holds dialogue
   scale: {x: 250, y: 750}
   dialogue: This is a choice after waiting a few seconds
@@ -67,6 +67,7 @@ MonoBehaviour:
   description: Plays connected nodes in the order they are connected
   scale: {x: 250, y: 750}
   children:
+  - {fileID: 4580551647697651602}
   - {fileID: -5316580862949490224}
 --- !u!114 &-4743378837799962
 MonoBehaviour:
@@ -85,7 +86,7 @@ MonoBehaviour:
   guid: 0708e6df63ac28b4883646bebbe4893d
   loop: 0
   loopCount: 0
-  position: {x: 207.32253, y: 0.000002861023}
+  position: {x: 190, y: 0}
   description: Plays connected nodes in the order they are connected
   scale: {x: 250, y: 750}
   children:
@@ -111,14 +112,14 @@ MonoBehaviour:
   graphState: 0
   nodes:
   - {fileID: 4657669097298260432}
+  - {fileID: 1195313915047522403}
   - {fileID: -4743378837799962}
   - {fileID: 1073243124666433656}
   - {fileID: 4085708535751355604}
   - {fileID: -8935528698778152540}
-  - {fileID: 1195313915047522403}
   - {fileID: -2953678234643323501}
-  - {fileID: -5316580862949490224}
   - {fileID: 4580551647697651602}
+  - {fileID: -5316580862949490224}
 --- !u!114 &1073243124666433656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,10 +207,10 @@ MonoBehaviour:
   guid: d3615272abdae9f4cae7052429c33f96
   loop: 0
   loopCount: 0
-  position: {x: 0, y: 0}
+  position: {x: 1093, y: 0.0000023345929}
   description: Will wait x amount of time between playing nodes in a sequence
   scale: {x: 250, y: 750}
-  duration: 1
+  duration: 5
 --- !u!114 &4657669097298260432
 MonoBehaviour:
   m_ObjectHideFlags: 0
