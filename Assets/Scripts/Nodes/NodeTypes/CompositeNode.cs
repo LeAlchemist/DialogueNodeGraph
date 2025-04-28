@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public abstract class CompositeNode : Node
 {
-    public List<Node> children = new List<Node>();
+    public List<Node> children = new();
 
     public override Node Clone()
     {

@@ -1,14 +1,15 @@
-public class SequencerNode : CompositeNode
-{
-    int current;
-    public SequencerNode()
-    {
-        description = "Plays connected nodes in the order they are connected";
-    }
+using System.Collections.Generic;
 
+public class ChoiceNode : CompositeNode
+{
+    public List<string> choices = new();
+    public int selection;
+    ChoiceNode()
+    {
+        description = "This or that";
+    }
     protected override void OnStart()
     {
-        current = 0;
 
     }
 
@@ -22,7 +23,7 @@ public class SequencerNode : CompositeNode
 
     protected override State OnUpdate()
     {
-        var child = children[current];
+        var child = children[selection];
         switch (child.Update())
         {
             case State.Running:
@@ -30,10 +31,8 @@ public class SequencerNode : CompositeNode
             case State.Failure:
                 return State.Failure;
             case State.Success:
-                current++;
                 break;
         }
-
-        return current == children.Count ? State.Success : State.Running;
+        return State.Success;
     }
 }

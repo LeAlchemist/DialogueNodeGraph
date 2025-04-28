@@ -20,6 +20,11 @@ public class DebugLogNode : ActionNode
 
     protected override void OnStop()
     {
+        if (loop == true)
+        {
+            loopCount++;
+        }
+
         if (onStop)
         {
             Debug.Log($"OnStop {message}");

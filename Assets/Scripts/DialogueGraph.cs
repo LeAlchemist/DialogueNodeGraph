@@ -7,9 +7,12 @@ using UnityEditor.Experimental.GraphView;
 public class DialogueGraph : ScriptableObject
 {
     public Node rootNode;
+    public int node = 0;
+    public DialogueNode dialogueNode;
     public Node.State graphState = Node.State.Running;
-    public List<Node> nodes = new List<Node>();
     public Blackboard blackboard = new Blackboard();
+    public List<Node> nodes = new();
+
 
     public Node.State Update()
     {
@@ -57,6 +60,12 @@ public class DialogueGraph : ScriptableObject
             EditorUtility.SetDirty(decorator);
         }
 
+        ChoiceNode choice = parent as ChoiceNode;
+        if (choice)
+        {
+            choice.choices.Add("Choice " + (choice.children.Count + 1));
+        }
+
         CompositeNode composite = parent as CompositeNode;
         if (composite)
         {
@@ -83,6 +92,12 @@ public class DialogueGraph : ScriptableObject
             Undo.RecordObject(decorator, "Dialogue Graph (Remove Child)");
             decorator.child = null;
             EditorUtility.SetDirty(decorator);
+        }
+
+        ChoiceNode choice = parent as ChoiceNode;
+        if (choice)
+        {
+            choice.choices.RemoveAt(choice.children.Count - 1);
         }
 
         CompositeNode composite = parent as CompositeNode;

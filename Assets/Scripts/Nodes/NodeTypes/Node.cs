@@ -10,18 +10,30 @@ public abstract class Node : ScriptableObject
         Success
     }
 
-    [HideInInspector]
+    //[HideInInspector]
     public State state = State.Running;
-    [HideInInspector]
+    //[HideInInspector]
     public bool started = false;
     [HideInInspector]
     public string guid;
+    [HideInInspector]
+    public bool loop;
+    [HideInInspector]
+    public int loopCount;
     [HideInInspector]
     public Vector2 position;
     [HideInInspector]
     public Blackboard blackboard;
     [HideInInspector]
     public string description;
+    [HideInInspector]
+    public Vector2 scale;
+
+    public Node()
+    {
+        scale.x = 250;
+        scale.y = 750;
+    }
 
     public State Update()
     {
