@@ -17,12 +17,12 @@ MonoBehaviour:
   guid: 90564a310e7aef447add9c6a085078a3
   loop: 0
   loopCount: 0
-  position: {x: 494, y: 272.99997}
+  position: {x: 1201.0627, y: 272.99997}
   description: This holds dialogue
   scale: {x: 250, y: 750}
   dialogue: This is dialogue node 3
   wordsPerMinute: 100
-  duration: 1
+  duration: 8
 --- !u!114 &-5316580862949490224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
   guid: 0a447e4524e6daa4e80ff73d3f51e5bb
   loop: 0
   loopCount: 0
-  position: {x: 1093.0001, y: 136}
+  position: {x: 1800.0627, y: 136.00002}
   description: This holds dialogue
   scale: {x: 250, y: 750}
   dialogue: This is a choice after waiting a few seconds
@@ -63,7 +63,7 @@ MonoBehaviour:
   guid: 112a538777adb5c4e8cba4e3d1e99099
   loop: 0
   loopCount: 0
-  position: {x: 1093.0001, y: 260.00003}
+  position: {x: 1799.9998, y: 384}
   description: Plays connected nodes in the order they are connected
   scale: {x: 250, y: 750}
   children:
@@ -85,7 +85,7 @@ MonoBehaviour:
   guid: 681b31894a15dd948a292be3266ae35e
   loop: 0
   loopCount: 0
-  position: {x: 797.5209, y: -0.000009372787}
+  position: {x: 1505.0627, y: -0.0000052452087}
   description: Plays connected nodes in the order they are connected
   scale: {x: 250, y: 750}
   children:
@@ -109,7 +109,7 @@ MonoBehaviour:
   guid: 37d2011c44796474d991539501748817
   loop: 0
   loopCount: 0
-  position: {x: 1395.4491, y: 272.99997}
+  position: {x: 2095, y: 397}
   description: This holds dialogue
   scale: {x: 250, y: 750}
   dialogue: This is an additional sequence after the first choice
@@ -132,7 +132,7 @@ MonoBehaviour:
   guid: 2adc853b1026f554da87f561688ad43b
   loop: 0
   loopCount: 0
-  position: {x: 1093, y: 384}
+  position: {x: 1799.9996, y: 252}
   description: This holds dialogue
   scale: {x: 250, y: 750}
   dialogue: This is a second choice
@@ -153,9 +153,9 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: 0708e6df63ac28b4883646bebbe4893d
-  loop: 0
+  loop: 1
   loopCount: 0
-  position: {x: 196, y: 0}
+  position: {x: 903.0628, y: -0.0000052452087}
   description: Plays connected nodes in the order they are connected
   scale: {x: 250, y: 750}
   children:
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rootNode: {fileID: 4657669097298260432}
   node: 0
-  dialogueNode: {fileID: 0}
+  dialogueNode: {fileID: -8935528698778152540}
   graphState: 0
   nodes:
   - {fileID: 4657669097298260432}
@@ -193,6 +193,9 @@ MonoBehaviour:
   - {fileID: -1356523726049453200}
   - {fileID: -3260609984521849520}
   - {fileID: -1669385443131350338}
+  - {fileID: 4666481426738220299}
+  - {fileID: 3974180921856766429}
+  - {fileID: 2105470894350529776}
 --- !u!114 &1073243124666433656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,12 +213,12 @@ MonoBehaviour:
   guid: 15bc99c88e84ee4478ad4b8425a773e3
   loop: 0
   loopCount: 0
-  position: {x: 494, y: 0}
+  position: {x: 1201.0001, y: 0.0000014305115}
   description: This holds dialogue
   scale: {x: 250, y: 750}
   dialogue: This is dialogue node 1
   wordsPerMinute: 100
-  duration: 1
+  duration: 8
 --- !u!114 &1123251361915257722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,11 +236,58 @@ MonoBehaviour:
   guid: 08b3d9da0da1e9c49876e2d6b82c7475
   loop: 0
   loopCount: 0
-  position: {x: 798, y: 384.00003}
+  position: {x: 1504.9996, y: 383.99997}
   description: Plays connected nodes in the order they are connected
   scale: {x: 250, y: 750}
   children:
   - {fileID: -1356523726049453200}
+  - {fileID: -3260609984521849520}
+--- !u!114 &2105470894350529776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3145b2b35c1c62545939028b350abded, type: 3}
+  m_Name: DialogueNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: a39424b1c84ffec4cb9c41e2a6151bbb
+  loop: 0
+  loopCount: 0
+  position: {x: 594.0001, y: 160.67801}
+  description: This holds dialogue
+  scale: {x: 250, y: 750}
+  dialogue: Looks like you were stuck in a loop
+  wordsPerMinute: 100
+  duration: 1
+--- !u!114 &3974180921856766429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408b53f925ecc834a81110c0bc098171, type: 3}
+  m_Name: SequencerNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: 982f86a0eba5da34f8769074bad93a27
+  loop: 0
+  loopCount: 0
+  position: {x: 236.74178, y: -0.0000052452087}
+  description: Plays connected nodes in the order they are connected
+  scale: {x: 250, y: 750}
+  children:
+  - {fileID: 4666481426738220299}
+  - {fileID: 2105470894350529776}
 --- !u!114 &4085708535751355604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,12 +305,12 @@ MonoBehaviour:
   guid: c7bb191777b0f5244b001e30c0a480fe
   loop: 0
   loopCount: 0
-  position: {x: 494, y: 136}
+  position: {x: 1201.0001, y: 136}
   description: This holds dialogue
   scale: {x: 250, y: 750}
   dialogue: This is dialogue node 2
   wordsPerMinute: 100
-  duration: 1
+  duration: 8
 --- !u!114 &4580551647697651602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,7 +328,7 @@ MonoBehaviour:
   guid: d3615272abdae9f4cae7052429c33f96
   loop: 0
   loopCount: 0
-  position: {x: 1093, y: 0.0000023345929}
+  position: {x: 1800.0627, y: -0.0000052452087}
   description: Will wait x amount of time between playing nodes in a sequence
   scale: {x: 250, y: 750}
   duration: 5
@@ -302,7 +352,29 @@ MonoBehaviour:
   position: {x: 0, y: 0}
   description: This is where it all starts
   scale: {x: 150, y: 750}
+  child: {fileID: 3974180921856766429}
+--- !u!114 &4666481426738220299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0edc7bf08316aa249b0047264b8ac788, type: 3}
+  m_Name: RepeatNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  guid: d3228622d1ae4ed4c869d7ef43df2c2d
+  loop: 0
+  loopCount: 0
+  position: {x: 594, y: 0.0000014305115}
+  description: Plays the sequence of connected nodes over and over
+  scale: {x: 250, y: 750}
   child: {fileID: -4743378837799962}
+  repeatCount: 5
 --- !u!114 &8531059368890849414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,13 +392,13 @@ MonoBehaviour:
   guid: 7a53ef8a02312414fa20e0935ddbed93
   loop: 0
   loopCount: 0
-  position: {x: 494, y: 397}
+  position: {x: 1201.0627, y: 397.00003}
   description: This or that
   scale: {x: 250, y: 750}
   children:
   - {fileID: -2953678234643323501}
   - {fileID: 1123251361915257722}
   choices:
-  - choice 1
-  - choice 2
+  - 'Yes '
+  - Choice 2
   selection: 0
