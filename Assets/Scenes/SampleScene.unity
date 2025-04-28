@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _graph: {fileID: 11400000, guid: 0ee2f8c27f34af848a7e322e45e37614, type: 2}
+  currentDialogue: 
 --- !u!4 &227858645
 Transform:
   m_ObjectHideFlags: 0

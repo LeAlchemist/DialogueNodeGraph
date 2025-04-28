@@ -57,6 +57,12 @@ public class DialogueGraph : ScriptableObject
             EditorUtility.SetDirty(decorator);
         }
 
+        ChoiceNode choice = parent as ChoiceNode;
+        if (choice)
+        {
+            choice.choices.Add("Choice " + (choice.children.Count + 1));
+        }
+
         CompositeNode composite = parent as CompositeNode;
         if (composite)
         {
@@ -83,6 +89,12 @@ public class DialogueGraph : ScriptableObject
             Undo.RecordObject(decorator, "Dialogue Graph (Remove Child)");
             decorator.child = null;
             EditorUtility.SetDirty(decorator);
+        }
+
+        ChoiceNode choice = parent as ChoiceNode;
+        if (choice)
+        {
+            choice.choices.RemoveAt(choice.children.Count - 1);
         }
 
         CompositeNode composite = parent as CompositeNode;
