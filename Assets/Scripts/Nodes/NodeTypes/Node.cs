@@ -9,9 +9,9 @@ public abstract class Node : ScriptableObject
         Success
     }
 
-    [HideInInspector]
+    //[HideInInspector]
     public State state = State.Running;
-    [HideInInspector]
+    //[HideInInspector]
     public bool started = false;
     [HideInInspector]
     public string guid;

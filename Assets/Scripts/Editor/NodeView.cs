@@ -75,8 +75,17 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
     {
         switch (node)
         {
+            case DialogueNode:
+                input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(bool));
+                break;
             case ActionNode:
                 input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(bool));
+                break;
+            case SequencerNode:
+                input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(bool));
+                break;
+            case ChoiceNode:
+                input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(bool));
                 break;
             case CompositeNode:
                 input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(bool));

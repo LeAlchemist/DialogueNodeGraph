@@ -16,65 +16,66 @@ public class DialogueGraphRunner : MonoBehaviour
     {
         _graph.Update();
 
-        if (_graph.node < _graph.nodes.Count)
-            switch (_graph.nodes[_graph.node])
+        for (int i = 0; i < _graph.nodes.Count; i++)
+            if (_graph.nodes[i].started == true)
             {
-                #region RootNode
-                case RootNode:
-                    switch (_graph.nodes[_graph.node].state)
-                    {
-                        case Node.State.Running:
-                            _graph.node++;
-                            break;
-                    }
-                    break;
-                #endregion
-                #region DialogueNode
-                case DialogueNode:
-                    switch (_graph.nodes[_graph.node].state)
-                    {
-                        case Node.State.Running:
-                            _graph.dialogueNode = _graph.nodes[_graph.node] as DialogueNode;
-                            currentDialogue = _graph.dialogueNode.dialogue;
-                            Debug.Log($"{_graph.nodes[_graph.node].name} {_graph.nodes[_graph.node].guid} {_graph.nodes[_graph.node].state} {_graph.dialogueNode.dialogue}");
-                            break;
-                        case Node.State.Success:
-                            currentDialogue = "";
-                            _graph.node++;
-                            break;
-                    }
-                    break;
-                #endregion
-                #region ActionNode
-                case ActionNode:
-                    switch (_graph.nodes[_graph.node].state)
-                    {
-                        case Node.State.Success:
-                            _graph.node++;
-                            break;
-                    }
-                    break;
-                #endregion
-                #region CompositeNode
-                case CompositeNode:
-                    switch (_graph.nodes[_graph.node].state)
-                    {
-                        case Node.State.Running:
-                            _graph.node++;
-                            break;
-                    }
-                    break;
-                #endregion
-                #region DecoratorNode
-                case DecoratorNode:
-                    switch (_graph.nodes[_graph.node].state)
-                    {
-                        case Node.State.Running:
-                            _graph.node++;
-                            break;
-                    }
-                    break;
+                switch (_graph.nodes[i])
+                {
+                    #region RootNode
+                    case RootNode:
+                        switch (_graph.nodes[i].state)
+                        {
+                            case Node.State.Running:
+                                break;
+                        }
+                        break;
                     #endregion
+                    #region DialogueNode
+                    case DialogueNode:
+                        switch (_graph.nodes[i].state)
+                        {
+                            case Node.State.Running:
+                                _graph.dialogueNode = _graph.nodes[i] as DialogueNode;
+                                currentDialogue = _graph.dialogueNode.dialogue;
+                                Debug.Log($"{_graph.nodes[i].name} {_graph.nodes[i].guid} {_graph.nodes[i].state} \n \"{_graph.dialogueNode.dialogue}\"");
+
+                                break;
+                            case Node.State.Success:
+                                currentDialogue = _graph.dialogueNode.dialogue;
+                                currentDialogue = "";
+                                break;
+                        }
+
+                        break;
+                    #endregion
+                    #region ActionNode
+                    case ActionNode:
+                        switch (_graph.nodes[i].state)
+                        {
+                            case Node.State.Success:
+                                break;
+                        }
+                        break;
+                    #endregion
+                    #region CompositeNode
+                    case CompositeNode:
+                        switch (_graph.nodes[i].state)
+                        {
+                            case Node.State.Running:
+                                break;
+                        }
+                        break;
+                    #endregion
+                    #region DecoratorNode
+                    case DecoratorNode:
+                        switch (_graph.nodes[i].state)
+                        {
+                            case Node.State.Running:
+                                break;
+                        }
+                        break;
+                        #endregion
+                }
             }
     }
 }

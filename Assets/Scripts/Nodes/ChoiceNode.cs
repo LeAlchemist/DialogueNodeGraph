@@ -1,6 +1,8 @@
+using System.Collections.Generic;
+
 public class ChoiceNode : CompositeNode
 {
-    public string[] choices;
+    public List<string> choices = new();
     public int selection;
     ChoiceNode()
     {
