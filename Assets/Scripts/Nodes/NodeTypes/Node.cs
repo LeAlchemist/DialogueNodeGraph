@@ -13,6 +13,8 @@ public abstract class Node : ScriptableObject
     public State state = State.Running;
     //[HideInInspector]
     public bool started = false;
+
+    public string _name = "";
     [HideInInspector]
     public string guid;
     [HideInInspector]

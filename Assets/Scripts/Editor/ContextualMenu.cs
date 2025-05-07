@@ -1,16 +1,18 @@
+using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor;
 
 public partial class GraphEditorView : GraphView
 {
+    public Vector2 position = new(0, 0);
     public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
     {
         base.BuildContextualMenu(evt);
         {
             //dialogue nodes
-            evt.menu.AppendAction($"Dialogue/Dialogue", (a) => CreateNode(typeof(DialogueNode)));
-            evt.menu.AppendAction($"Dialogue/Choice", (a) => CreateNode(typeof(ChoiceNode)));
+            evt.menu.AppendAction($"Dialogue/Dialogue", (a) => CreateNode(typeof(DialogueNode), position));
+            evt.menu.AppendAction($"Dialogue/Choice", (a) => CreateNode(typeof(ChoiceNode), position));
         }
 
         {
@@ -28,7 +30,7 @@ public partial class GraphEditorView : GraphView
             var types = TypeCache.GetTypesDerivedFrom<ActionNode>();
             foreach (var type in types)
             {
-                evt.menu.AppendAction($"{type.BaseType.Name.Replace("Node", "")}/{type.Name.Replace("Node", "")}", (a) => CreateNode(type));
+                evt.menu.AppendAction($"{type.BaseType.Name.Replace("Node", "")}/{type.Name.Replace("Node", "")}", (a) => CreateNode(type, position));
             }
         }
 
@@ -37,7 +39,7 @@ public partial class GraphEditorView : GraphView
             var types = TypeCache.GetTypesDerivedFrom<CompositeNode>();
             foreach (var type in types)
             {
-                evt.menu.AppendAction($"{type.BaseType.Name.Replace("Node", "")}/{type.Name.Replace("Node", "")}", (a) => CreateNode(type));
+                evt.menu.AppendAction($"{type.BaseType.Name.Replace("Node", "")}/{type.Name.Replace("Node", "")}", (a) => CreateNode(type, position));
             }
         }
 
@@ -47,7 +49,7 @@ public partial class GraphEditorView : GraphView
             foreach (var type in types)
             {
 
-                evt.menu.AppendAction($"{type.BaseType.Name.Replace("Node", "")}/{type.Name.Replace("Node", "")}", (a) => CreateNode(type));
+                evt.menu.AppendAction($"{type.BaseType.Name.Replace("Node", "")}/{type.Name.Replace("Node", "")}", (a) => CreateNode(type, position));
             }
         }
 
@@ -57,7 +59,7 @@ public partial class GraphEditorView : GraphView
             foreach (var type in types)
             {
 
-                evt.menu.AppendAction($"All/{type.Name.Replace("Node", "")}", (a) => CreateNode(type));
+                evt.menu.AppendAction($"All/{type.Name.Replace("Node", "")}", (a) => CreateNode(type, position));
             }
         }
 

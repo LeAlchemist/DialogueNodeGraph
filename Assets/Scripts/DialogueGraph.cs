@@ -22,11 +22,12 @@ public class DialogueGraph : ScriptableObject
     }
 
 #if UNITY_EDITOR
-    public Node CreateNode(System.Type type)
+    public Node CreateNode(System.Type type, Vector2 position)
     {
         Node node = ScriptableObject.CreateInstance(type) as Node;
         node.name = type.Name;
         node.guid = GUID.Generate().ToString();
+        node.position = position;
         Undo.RecordObject(node, "Dialogue Graph (Create Node)");
         nodes.Add(node);
 

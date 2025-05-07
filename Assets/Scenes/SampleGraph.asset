@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
+  _name: 
   guid: 90564a310e7aef447add9c6a085078a3
   loop: 0
   loopCount: 0
@@ -37,6 +38,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
+  _name: 
   guid: 0a447e4524e6daa4e80ff73d3f51e5bb
   loop: 0
   loopCount: 0
@@ -60,6 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
+  _name: Test
   guid: 112a538777adb5c4e8cba4e3d1e99099
   loop: 0
   loopCount: 0
@@ -82,10 +85,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
+  _name: Choice 1
   guid: 681b31894a15dd948a292be3266ae35e
   loop: 0
   loopCount: 0
-  position: {x: 1505.0627, y: -0.0000052452087}
+  position: {x: 1505, y: 0.0000067949295}
   description: Plays connected nodes in the order they are connected
   scale: {x: 250, y: 750}
   children:
@@ -106,6 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
+  _name: 
   guid: 37d2011c44796474d991539501748817
   loop: 0
   loopCount: 0
@@ -129,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
+  _name: 
   guid: 2adc853b1026f554da87f561688ad43b
   loop: 0
   loopCount: 0
@@ -152,6 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
+  _name: 
   guid: 0708e6df63ac28b4883646bebbe4893d
   loop: 1
   loopCount: 0
@@ -210,6 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
+  _name: 
   guid: 15bc99c88e84ee4478ad4b8425a773e3
   loop: 0
   loopCount: 0
@@ -233,10 +241,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
+  _name: Choice 2
   guid: 08b3d9da0da1e9c49876e2d6b82c7475
   loop: 0
   loopCount: 0
-  position: {x: 1504.9996, y: 383.99997}
+  position: {x: 1505, y: 384}
   description: Plays connected nodes in the order they are connected
   scale: {x: 250, y: 750}
   children:
@@ -256,6 +265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
+  _name: 
   guid: a39424b1c84ffec4cb9c41e2a6151bbb
   loop: 0
   loopCount: 0
@@ -279,6 +289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
+  _name: 
   guid: 982f86a0eba5da34f8769074bad93a27
   loop: 0
   loopCount: 0
@@ -302,6 +313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
+  _name: 
   guid: c7bb191777b0f5244b001e30c0a480fe
   loop: 0
   loopCount: 0
@@ -325,6 +337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
+  _name: 
   guid: d3615272abdae9f4cae7052429c33f96
   loop: 0
   loopCount: 0
@@ -346,6 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
+  _name: 
   guid: b7849f3298dc78c4a8ee087e695cac93
   loop: 0
   loopCount: 0
@@ -367,6 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
+  _name: 
   guid: d3228622d1ae4ed4c869d7ef43df2c2d
   loop: 0
   loopCount: 0
@@ -389,6 +404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   started: 0
+  _name: 
   guid: 7a53ef8a02312414fa20e0935ddbed93
   loop: 0
   loopCount: 0

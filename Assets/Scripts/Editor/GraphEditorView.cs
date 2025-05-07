@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor;
@@ -48,7 +49,7 @@ public partial class GraphEditorView : GraphView
 
         if (graph.rootNode == null)
         {
-            graph.rootNode = graph.CreateNode(typeof(RootNode)) as RootNode;
+            graph.rootNode = graph.CreateNode(typeof(RootNode), new Vector2(0, 0)) as RootNode;
             EditorUtility.SetDirty(graph);
             AssetDatabase.SaveAssets();
         }
@@ -128,9 +129,10 @@ public partial class GraphEditorView : GraphView
         return graphViewChange;
     }
 
-    public void CreateNode(System.Type type)
+    public void CreateNode(System.Type type, Vector2 position)
     {
-        Node node = _graph.CreateNode(type);
+
+        Node node = _graph.CreateNode(type, position);
 
         CreateNodeView(node);
     }
