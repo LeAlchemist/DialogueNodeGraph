@@ -4,9 +4,8 @@ using UnityEditor;
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class GraphEditorView : GraphView
+public partial class GraphEditorView : GraphView
 {
     public Action<NodeView> OnNodeSelected;
     [System.Obsolete]
@@ -129,35 +128,7 @@ public class GraphEditorView : GraphView
         return graphViewChange;
     }
 
-    public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
-    {
-        base.BuildContextualMenu(evt);
-        {
-            var types = TypeCache.GetTypesDerivedFrom<ActionNode>();
-            foreach (var type in types)
-            {
-                evt.menu.AppendAction($"{type.BaseType.Name.Replace("Node", "")}/{type.Name.Replace("Node", "")}", (a) => CreateNode(type));
-            }
-        }
-
-        {
-            var types = TypeCache.GetTypesDerivedFrom<CompositeNode>();
-            foreach (var type in types)
-            {
-                evt.menu.AppendAction($"{type.BaseType.Name.Replace("Node", "")}/{type.Name.Replace("Node", "")}", (a) => CreateNode(type));
-            }
-        }
-
-        {
-            var types = TypeCache.GetTypesDerivedFrom<DecoratorNode>();
-            foreach (var type in types)
-            {
-                evt.menu.AppendAction($"{type.BaseType.Name.Replace("Node", "")}/{type.Name.Replace("Node", "")}", (a) => CreateNode(type));
-            }
-        }
-    }
-
-    void CreateNode(System.Type type)
+    public void CreateNode(System.Type type)
     {
         Node node = _graph.CreateNode(type);
 
