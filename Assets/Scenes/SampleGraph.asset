@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3145b2b35c1c62545939028b350abded, type: 3}
   m_Name: DialogueNode
   m_EditorClassIdentifier: 
-  state: 0
+  state: 2
   started: 0
   _name: 
   guid: 90564a310e7aef447add9c6a085078a3
@@ -42,7 +42,7 @@ MonoBehaviour:
   guid: 0a447e4524e6daa4e80ff73d3f51e5bb
   loop: 0
   loopCount: 0
-  position: {x: 1800.0627, y: 136.00002}
+  position: {x: 1800, y: 136.00002}
   description: This holds dialogue
   scale: {x: 250, y: 750}
   dialogue: This is a choice after waiting a few seconds
@@ -66,7 +66,7 @@ MonoBehaviour:
   guid: 112a538777adb5c4e8cba4e3d1e99099
   loop: 0
   loopCount: 0
-  position: {x: 1799.9998, y: 384}
+  position: {x: 1799.9999, y: 384}
   description: Plays connected nodes in the order they are connected
   scale: {x: 250, y: 750}
   children:
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Name: SequencerNode
   m_EditorClassIdentifier: 
   state: 0
-  started: 0
+  started: 1
   _name: Choice 1
   guid: 681b31894a15dd948a292be3266ae35e
   loop: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
   guid: 37d2011c44796474d991539501748817
   loop: 0
   loopCount: 0
-  position: {x: 2095, y: 397}
+  position: {x: 2108.688, y: 396.99997}
   description: This holds dialogue
   scale: {x: 250, y: 750}
   dialogue: This is an additional sequence after the first choice
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: SequencerNode
   m_EditorClassIdentifier: 
   state: 0
-  started: 0
+  started: 1
   _name: 
   guid: 0708e6df63ac28b4883646bebbe4893d
   loop: 1
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3145b2b35c1c62545939028b350abded, type: 3}
   m_Name: DialogueNode
   m_EditorClassIdentifier: 
-  state: 0
+  state: 2
   started: 0
   _name: 
   guid: 15bc99c88e84ee4478ad4b8425a773e3
@@ -269,7 +269,7 @@ MonoBehaviour:
   guid: a39424b1c84ffec4cb9c41e2a6151bbb
   loop: 0
   loopCount: 0
-  position: {x: 594.0001, y: 160.67801}
+  position: {x: 594, y: 157.10007}
   description: This holds dialogue
   scale: {x: 250, y: 750}
   dialogue: Looks like you were stuck in a loop
@@ -288,7 +288,7 @@ MonoBehaviour:
   m_Name: SequencerNode
   m_EditorClassIdentifier: 
   state: 0
-  started: 0
+  started: 1
   _name: 
   guid: 982f86a0eba5da34f8769074bad93a27
   loop: 0
@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3145b2b35c1c62545939028b350abded, type: 3}
   m_Name: DialogueNode
   m_EditorClassIdentifier: 
-  state: 0
+  state: 2
   started: 0
   _name: 
   guid: c7bb191777b0f5244b001e30c0a480fe
@@ -336,7 +336,7 @@ MonoBehaviour:
   m_Name: WaitNode
   m_EditorClassIdentifier: 
   state: 0
-  started: 0
+  started: 1
   _name: 
   guid: d3615272abdae9f4cae7052429c33f96
   loop: 0
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Name: RootNode
   m_EditorClassIdentifier: 
   state: 0
-  started: 0
+  started: 1
   _name: 
   guid: b7849f3298dc78c4a8ee087e695cac93
   loop: 0
@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Name: RepeatNode
   m_EditorClassIdentifier: 
   state: 0
-  started: 0
+  started: 1
   _name: 
   guid: d3228622d1ae4ed4c869d7ef43df2c2d
   loop: 0
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Name: ChoiceNode
   m_EditorClassIdentifier: 
   state: 0
-  started: 0
+  started: 1
   _name: 
   guid: 7a53ef8a02312414fa20e0935ddbed93
   loop: 0

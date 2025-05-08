@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using Unity.VisualScripting;
 
 [CreateAssetMenu(menuName = "Dialogue Graph")]
 public class DialogueGraph : ScriptableObject
@@ -162,6 +164,22 @@ public class DialogueGraph : ScriptableObject
         {
             graph.nodes.Add(n);
         });
+
+        for (int i = 0; i < graph.nodes.Count; i++)
+        {
+            for (int j = 0; j < graph.nodes.Count; j++)
+            {
+                if (graph.nodes[i].guid == graph.nodes[j].guid)
+                {
+                    if (i != j & j < i)
+                    {
+                        graph.nodes.RemoveAt(i);
+                    }
+                }
+            }
+            Debug.Log($"{graph.nodes[i].name} {graph.nodes[i]._name} {graph.nodes[i].guid}");
+        }
+
         return graph;
     }
 }
