@@ -8,21 +8,29 @@ public partial class GraphEditorView : GraphView
     public Vector2 position = new(0, 0);
     public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
     {
+        string _add = "+Add";
+
         base.BuildContextualMenu(evt);
         {
+            string _category = "Dialogue";
+
             //dialogue nodes
-            evt.menu.AppendAction($"Dialogue/Dialogue", (a) => CreateNode(typeof(DialogueNode), position));
-            evt.menu.AppendAction($"Dialogue/Choice", (a) => CreateNode(typeof(ChoiceNode), position));
+            evt.menu.AppendAction($"{_add}/{_category}/Dialogue", (a) => CreateNode(typeof(DialogueNode), position));
+            evt.menu.AppendAction($"{_add}/{_category}/Choice", (a) => CreateNode(typeof(ChoiceNode), position));
         }
 
         {
+            string _category = "Actor";
+
             //actor nodes
-            evt.menu.AppendAction($"Actor/Placeholder/test", (a) => UnityEngine.Debug.Log("This is a placeholder for actor nodes"));
+            evt.menu.AppendAction($"{_add}/{_category}/Placeholder", (a) => UnityEngine.Debug.Log("This is a placeholder for actor nodes"));
         }
 
         {
+            string _category = "Scene";
+
             //scene nodes
-            evt.menu.AppendAction($"Scene/Placeholder", (a) => UnityEngine.Debug.Log("This is a placeholder for scene nodes"));
+            evt.menu.AppendAction($"{_add}/{_category}/Placeholder", (a) => UnityEngine.Debug.Log("This is a placeholder for scene nodes"));
         }
 
         {
@@ -30,7 +38,9 @@ public partial class GraphEditorView : GraphView
             var types = TypeCache.GetTypesDerivedFrom<ActionNode>();
             foreach (var type in types)
             {
-                evt.menu.AppendAction($"{type.BaseType.Name.Replace("Node", "")}/{type.Name.Replace("Node", "")}", (a) => CreateNode(type, position));
+                string _category = type.BaseType.Name.Replace("Node", "");
+
+                evt.menu.AppendAction($"{_add}/{_category}/{type.Name.Replace("Node", "")}", (a) => CreateNode(type, position));
             }
         }
 
@@ -39,7 +49,9 @@ public partial class GraphEditorView : GraphView
             var types = TypeCache.GetTypesDerivedFrom<CompositeNode>();
             foreach (var type in types)
             {
-                evt.menu.AppendAction($"{type.BaseType.Name.Replace("Node", "")}/{type.Name.Replace("Node", "")}", (a) => CreateNode(type, position));
+                string _category = type.BaseType.Name.Replace("Node", "");
+
+                evt.menu.AppendAction($"{_add}/{_category}/{type.Name.Replace("Node", "")}", (a) => CreateNode(type, position));
             }
         }
 
@@ -48,8 +60,9 @@ public partial class GraphEditorView : GraphView
             var types = TypeCache.GetTypesDerivedFrom<DecoratorNode>();
             foreach (var type in types)
             {
+                string _category = type.BaseType.Name.Replace("Node", "");
 
-                evt.menu.AppendAction($"{type.BaseType.Name.Replace("Node", "")}/{type.Name.Replace("Node", "")}", (a) => CreateNode(type, position));
+                evt.menu.AppendAction($"{_add}/{_category}/{type.Name.Replace("Node", "")}", (a) => CreateNode(type, position));
             }
         }
 
@@ -58,14 +71,17 @@ public partial class GraphEditorView : GraphView
             var types = TypeCache.GetTypesDerivedFrom<Node>();
             foreach (var type in types)
             {
+                string _category = "All";
 
-                evt.menu.AppendAction($"All/{type.Name.Replace("Node", "")}", (a) => CreateNode(type, position));
+                evt.menu.AppendAction($"{_add}/{_category}/{type.Name.Replace("Node", "")}", (a) => CreateNode(type, position));
             }
         }
 
         {
+            string _category = "Template";
+
             //node templates
-            evt.menu.AppendAction($"Templates/Placeholder", (a) => UnityEngine.Debug.Log("This is a placeholder for template collections of nodes"));
+            evt.menu.AppendAction($"{_add}/{_category}/Placeholder", (a) => UnityEngine.Debug.Log("This is a placeholder for template collections of nodes"));
         }
     }
 }

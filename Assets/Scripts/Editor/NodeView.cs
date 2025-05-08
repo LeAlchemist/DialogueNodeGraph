@@ -14,7 +14,16 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
     public NodeView(Node node)
     {
         this.node = node;
-        this.title = node.name.Replace("Node", "");
+
+        if (node._name == "")
+        {
+            this.title = node.name.Replace("Node", "");
+        }
+        else
+        {
+            this.title = node._name;
+        }
+
         this.viewDataKey = node.guid;
 
         style.left = node.position.x;
