@@ -1,20 +1,20 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEditor.Experimental.GraphView;
-using UnityEditor;
-using System;
 using System.Collections.Generic;
-using Codice.Utils;
-using UnityEngine.UI;
 
 public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
 {
     private GraphEditorView _graphEditorView;
+    private Texture2D _indentationIcon;
 
     public void Init(GraphEditorView graphEditorView)
     {
         _graphEditorView = graphEditorView;
         //_editorWindow = editorWindow;
+
+        _indentationIcon = new Texture2D(width: 1, height: 1);
+        _indentationIcon.SetPixel(x: 0, y: 0, new Color(0, 0, 0, 0));
+        _indentationIcon.Apply();
     }
 
     public List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context)
@@ -23,50 +23,55 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
         {
             new SearchTreeGroupEntry(new GUIContent(text: "Create Node"), level: 0),
             new SearchTreeGroupEntry(new GUIContent(text:"Dialogue"), level: 1),
-            new(new GUIContent(text:"Dialogue"))
+            new(new GUIContent(text:"Dialogue", _indentationIcon))
             {
                 userData = ScriptableObject.CreateInstance<DialogueNode>(),
                 level = 2
             },
-            new(new GUIContent(text:"Choice"))
+            new(new GUIContent(text:"Choice", _indentationIcon))
             {
                 userData = ScriptableObject.CreateInstance<DialogueNode>(),
                 level = 2
             },
             new SearchTreeGroupEntry(new GUIContent(text:"Actor"), level: 1),
-            new(new GUIContent(text:"This is a Placeholder"))
+            new(new GUIContent(text:"This is a Placeholder", _indentationIcon))
             {
                 userData = "", //ScriptableObject.CreateInstance<DialogueNode>(), 
                 level = 2
             },
             new SearchTreeGroupEntry(new GUIContent(text:"Scene"), level: 1),
-            new(new GUIContent(text:"This is a Placeholder"))
+            new(new GUIContent(text:"This is a Placeholder", _indentationIcon))
             {
                 userData = "", //ScriptableObject.CreateInstance<DialogueNode>(), 
                 level = 2
             },
             new SearchTreeGroupEntry(new GUIContent(text:"Base"), level: 1),
-            new(new GUIContent(text:"Sequence"))
+            new(new GUIContent(text:"Sequence", _indentationIcon))
             {
                 userData = ScriptableObject.CreateInstance<SequencerNode>(),
                 level = 2
             },
-            new(new GUIContent(text:"Repeat"))
+            new(new GUIContent(text:"Repeat", _indentationIcon))
             {
                 userData = ScriptableObject.CreateInstance<RepeatNode>(),
                 level = 2
             },
-            new(new GUIContent(text:"Wait"))
+            new(new GUIContent(text:"Wait", _indentationIcon))
             {
                 userData = ScriptableObject.CreateInstance<WaitNode>(),
                 level = 2
             },
-            new(new GUIContent(text:"DebugLog"))
+            new(new GUIContent(text:"DebugLog", _indentationIcon))
             {
                 userData = ScriptableObject.CreateInstance<DebugLogNode>(),
                 level = 2
             },
-            new SearchTreeGroupEntry(new GUIContent(text:"Template"), level: 1)
+            new SearchTreeGroupEntry(new GUIContent(text:"Template"), level: 1),
+            new(new GUIContent(text:"This is a Placeholder", _indentationIcon))
+            {
+                userData = "", //ScriptableObject.CreateInstance<DialogueNode>(), 
+                level = 2
+            },
     };
         return tree;
     }
