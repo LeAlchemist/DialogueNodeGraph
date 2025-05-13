@@ -12,7 +12,6 @@ public class DialogueGraph : ScriptableObject
     public DialogueNode dialogueNode;
     public Node.State graphState = Node.State.Running;
     public List<Node> nodes = new List<Node>();
-    public Blackboard blackboard = new Blackboard();
 
     public Node.State Update()
     {

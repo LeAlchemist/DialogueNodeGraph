@@ -12,6 +12,7 @@ public partial class GraphEditorView : GraphView
     [System.Obsolete]
     public new class UxmlFactory : UxmlFactory<GraphEditorView, GraphView.UxmlTraits> { }
     DialogueGraph _graph;
+
     public GraphEditorView()
     {
         Insert(0, new GridBackground());
@@ -26,6 +27,8 @@ public partial class GraphEditorView : GraphView
         styleSheets.Add(styleSheet);
 
         Undo.undoRedoPerformed += OnUndoRedo;
+
+        AddSearchWindow();
     }
 
     private void OnUndoRedo()

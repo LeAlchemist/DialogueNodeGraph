@@ -2,13 +2,15 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor;
+using System.Runtime.Remoting.Contexts;
 
 public partial class GraphEditorView : GraphView
 {
+    private NodeSeachWindow _seachWindow;
     public Vector2 position = new(0, 0);
     public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
     {
-        string _add = "+Add";
+        string _add = "Add";
 
         base.BuildContextualMenu(evt);
         {
@@ -83,5 +85,12 @@ public partial class GraphEditorView : GraphView
             //node templates
             evt.menu.AppendAction($"{_add}/{_category}/Placeholder", (a) => UnityEngine.Debug.Log("This is a placeholder for template collections of nodes"));
         }
+    }
+
+    public void AddSearchWindow()
+    {
+        _seachWindow = ScriptableObject.CreateInstance<NodeSeachWindow>();
+        _seachWindow.Init(this);
+        nodeCreationRequest = context => SearchWindow.Open(new SearchWindowContext(context.screenMousePosition), _seachWindow);
     }
 }
