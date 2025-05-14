@@ -8,6 +8,7 @@ using System.Collections.Generic;
 
 public partial class GraphEditorView : GraphView
 {
+    public Blackboard blackboard;
     public Action<NodeView> OnNodeSelected;
     [System.Obsolete]
     public new class UxmlFactory : UxmlFactory<GraphEditorView, GraphView.UxmlTraits> { }

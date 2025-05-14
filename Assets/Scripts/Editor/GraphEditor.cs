@@ -46,6 +46,7 @@ public partial class GraphEditor : EditorWindow
 
         OnSelectionChange();
         GenerateMiniMap();
+        GenerateBlackboard();
     }
 
     private void OnEnable()
