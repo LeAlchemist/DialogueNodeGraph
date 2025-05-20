@@ -15,7 +15,7 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
         _graphEditorView = graphEditorView;
         //_editorWindow = editorWindow;
 
-        #region Check to see if the blackboard container exists
+        #region BlackboardContainer Check
         if (AssetDatabase.IsValidFolder("assets/resources") == true)
         {
             if (AssetDatabase.AssetPathExists("assets/resources/BlackboardContainer.asset") == false)
@@ -93,27 +93,31 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
                 level = 2
             },
         };
+        #region Blackboard Elements
         {
             tree.Add(new SearchTreeGroupEntry(new GUIContent(text: "Blackboard"), level: 1));
+            tree.Add(new SearchTreeGroupEntry(new GUIContent(text: "Custom"), level: 2));
             tree.Add(new(new GUIContent(text: "Create New Node", _indentationIcon))
             {
                 userData = "Create Blackboard Node",
-                level = 2
+                level = 3
             });
             for (int i = 0; i < blackboardContainer.exposedProperties.Count; i++)
             {
-                tree.Add(new(new GUIContent(text: $"{blackboardContainer.exposedProperties[i].propertyName}", _indentationIcon))
+                tree.Add(new(new GUIContent(text: $"({blackboardContainer.exposedProperties[i].propertyType}) {blackboardContainer.exposedProperties[i].propertyName}", _indentationIcon))
                 {
                     userData = $"{blackboardContainer.exposedProperties[i].propertyName}",
-                    level = 2
+                    level = 3
                 });
             }
             tree.Add(new(new GUIContent(text: "Clear Blackboard", _indentationIcon))
             {
                 userData = "Clear Blackboard",
-                level = 2
+                level = 3
             });
         }
+        #endregion
+        #region Template Elements
         {
             tree.Add(new SearchTreeGroupEntry(new GUIContent(text: "Template"), level: 1));
             tree.Add(new(new GUIContent(text: "This is a Placeholder", _indentationIcon))
@@ -122,6 +126,8 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
                 level = 2
             });
         }
+        #endregion
+
         return tree;
     }
 
@@ -151,7 +157,7 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
             case WaitNode:
                 _graphEditorView.CreateNode(typeof(WaitNode), _graphEditorView.position);
                 return true;
-            #region create Blackboard Nodes
+            #region Create Blackboard Nodes
             case "Create Blackboard Node":
                 var property = new ExposedProperty();
                 //Property Name
@@ -167,11 +173,18 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
                 blackboardContainer.exposedProperties.Add(property);
                 return true;
             #endregion
-            #region Clear Blackboard
+            #region Clear Blackboard Elements
             case "Clear Blackboard":
                 //needs a dialog prompt to verify
                 //maybe set it up to remove a specific node
-                blackboardContainer.exposedProperties.Clear();
+                if (EditorUtility.DisplayDialog(title: "Clear Blackboard Elements",
+                message: "Are you sure you want to clear all Blackboard Elements",
+                ok: "Confirm",
+                cancel: "Cancel"))
+                {
+                    blackboardContainer.exposedProperties.Clear();
+                }
+
                 return true;
             #endregion
             default:
