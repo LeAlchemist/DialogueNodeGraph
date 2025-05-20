@@ -46,7 +46,6 @@ public partial class GraphEditor : EditorWindow
 
         OnSelectionChange();
         GenerateMiniMap();
-        GenerateBlackboard();
     }
 
     private void OnEnable()
@@ -105,7 +104,6 @@ public partial class GraphEditor : EditorWindow
             if (_graph && AssetDatabase.CanOpenAssetInEditor(_graph.GetInstanceID()))
             {
                 _view.Populateview(_graph);
-                LoadBlackboard();
             }
         }
     }
