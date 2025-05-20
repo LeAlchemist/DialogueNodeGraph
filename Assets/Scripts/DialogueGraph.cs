@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.Experimental.GraphView;
 
 [CreateAssetMenu(menuName = "Dialogue Graph")]
 public class DialogueGraph : ScriptableObject

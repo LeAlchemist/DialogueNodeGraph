@@ -105,6 +105,7 @@ public partial class GraphEditor : EditorWindow
             if (_graph && AssetDatabase.CanOpenAssetInEditor(_graph.GetInstanceID()))
             {
                 _view.Populateview(_graph);
+                LoadBlackboard();
             }
         }
     }
