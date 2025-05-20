@@ -15,6 +15,7 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
         _graphEditorView = graphEditorView;
         //_editorWindow = editorWindow;
 
+        #region Check to see if the blackboard container exists
         if (AssetDatabase.IsValidFolder("assets/resources") == true)
         {
             if (AssetDatabase.AssetPathExists("assets/resources/BlackboardContainer.asset") == false)
@@ -35,6 +36,7 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
             AssetDatabase.CreateAsset(_container, "assets/resources/BlackboardContainer.asset");
             blackboardContainer = AssetDatabase.LoadAssetAtPath<BlackboardContainer>("assets/resources/BlackboardContainer.asset");
         }
+        #endregion
 
         _indentationIcon = new Texture2D(width: 1, height: 1);
         _indentationIcon.SetPixel(x: 0, y: 0, new Color(0, 0, 0, 0));
@@ -102,10 +104,15 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
             {
                 tree.Add(new(new GUIContent(text: $"{blackboardContainer.exposedProperties[i].propertyName}", _indentationIcon))
                 {
-                    userData = "", //ScriptableObject.CreateInstance<DialogueNode>(), 
+                    userData = $"{blackboardContainer.exposedProperties[i].propertyName}",
                     level = 2
                 });
             }
+            tree.Add(new(new GUIContent(text: "Clear Blackboard", _indentationIcon))
+            {
+                userData = "Clear Blackboard",
+                level = 2
+            });
         }
         {
             tree.Add(new SearchTreeGroupEntry(new GUIContent(text: "Template"), level: 1));
@@ -144,8 +151,8 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
             case WaitNode:
                 _graphEditorView.CreateNode(typeof(WaitNode), _graphEditorView.position);
                 return true;
+            #region create Blackboard Nodes
             case "Create Blackboard Node":
-                Debug.Log($"Before count: {blackboardContainer.exposedProperties.Count}");
                 var property = new ExposedProperty();
                 //Property Name
                 property.propertyName = "New Name";
@@ -158,10 +165,24 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
                 property.propertyValueBool = false;
 
                 blackboardContainer.exposedProperties.Add(property);
-                Debug.Log($"Current level: {tree.Count}");
-                Debug.Log($"After Count: {blackboardContainer.exposedProperties.Count}");
                 return true;
+            #endregion
+            #region Clear Blackboard
+            case "Clear Blackboard":
+                //needs a dialog prompt to verify
+                //maybe set it up to remove a specific node
+                blackboardContainer.exposedProperties.Clear();
+                return true;
+            #endregion
             default:
+                for (int i = 0; i < blackboardContainer.exposedProperties.Count; i++)
+                {
+                    if (SearchTreeEntry.userData.ToString() == blackboardContainer.exposedProperties[i].propertyName)
+                    {
+                        Debug.Log($"{SearchTreeEntry.userData} is an exposed property of type {blackboardContainer.exposedProperties[i].propertyType} \n {blackboardContainer.exposedProperties[i].propertyName}");
+                        return true;
+                    }
+                }
                 Debug.Log($"{SearchTreeEntry.userData}");
                 return false;
         }
