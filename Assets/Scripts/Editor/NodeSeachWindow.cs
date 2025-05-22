@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEditor.Experimental.GraphView;
 using System.Collections.Generic;
 using UnityEditor;
+using System.Reflection;
+using Unity.VisualScripting;
 
 public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
 {
@@ -96,6 +98,7 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
         #region Blackboard Elements
         {
             tree.Add(new SearchTreeGroupEntry(new GUIContent(text: "Blackboard"), level: 1));
+            #region Custom Elements
             tree.Add(new SearchTreeGroupEntry(new GUIContent(text: "Custom"), level: 2));
             tree.Add(new(new GUIContent(text: "Create New Node", _indentationIcon))
             {
@@ -104,7 +107,7 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
             });
             for (int i = 0; i < blackboardContainer.exposedProperties.Count; i++)
             {
-                tree.Add(new(new GUIContent(text: $"({blackboardContainer.exposedProperties[i].propertyType}) {blackboardContainer.exposedProperties[i].propertyName}", _indentationIcon))
+                tree.Add(new(new GUIContent(text: $"[{blackboardContainer.exposedProperties[i].propertyType}] {blackboardContainer.exposedProperties[i].propertyName}", _indentationIcon))
                 {
                     userData = $"{blackboardContainer.exposedProperties[i].propertyName}",
                     level = 3
@@ -115,6 +118,41 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
                 userData = "Clear Blackboard",
                 level = 3
             });
+            #endregion
+            #region Scene Elements
+            GameObject[] scene = GameObject.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
+            foreach (GameObject sceneObj in scene)
+            {
+                tree.Add(new SearchTreeGroupEntry(new GUIContent(text: $"{sceneObj.name}"), level: 2));
+
+                Component[] components = sceneObj.GetComponents(typeof(Component));
+                foreach (Component component in components)
+                {
+                    tree.Add(new SearchTreeGroupEntry(new GUIContent(text: $"[Component] {component.GetType().Name}"), level: 3));
+
+                    BindingFlags allInstance = BindingFlags.DeclaredOnly |
+                        BindingFlags.Public |
+                        BindingFlags.Instance;
+                    foreach (FieldInfo fieldInfo in component.GetType().GetFields(allInstance))
+                    {
+                        var fieldtype = Resources.InstanceIDToObject(sceneObj.GetInstanceID()).GetComponent(component.GetType()).GetType().GetField($"{fieldInfo.Name}").FieldType.Name;
+                        tree.Add(new(new GUIContent(text: $"[{fieldtype}] {fieldInfo.Name}", _indentationIcon))
+                        {
+                            userData = Resources.InstanceIDToObject(sceneObj.GetInstanceID()).GetComponent(component.GetType()).GetType().GetField($"{fieldInfo.Name}").GetValue(Resources.InstanceIDToObject(sceneObj.GetInstanceID()).GetComponent(component.GetType())),
+                            level = 4
+                        });
+                    }
+                    //foreach (PropertyInfo propertyInfo in component.GetType().GetProperties(allInstance))
+                    //{
+                    //    tree.Add(new(new GUIContent(text: $"[{component.GetType().Name}] {propertyInfo.Name}", _indentationIcon))
+                    //    {
+                    //        userData = $"{sceneObj.GetInstanceID()} {component.GetType().Name} {propertyInfo.Name}",
+                    //        level = 4
+                    //    });
+                    //}
+                }
+            }
+            #endregion
         }
         #endregion
         #region Template Elements
