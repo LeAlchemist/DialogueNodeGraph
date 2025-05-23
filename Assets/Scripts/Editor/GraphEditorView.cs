@@ -12,7 +12,8 @@ public partial class GraphEditorView : GraphView
     public Action<NodeView> OnNodeSelected;
     [System.Obsolete]
     public new class UxmlFactory : UxmlFactory<GraphEditorView, GraphView.UxmlTraits> { }
-    DialogueGraph _graph;
+
+    public DialogueGraph _graph;
 
     public GraphEditorView()
     {

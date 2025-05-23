@@ -123,24 +123,49 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
             GameObject[] scene = GameObject.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
             foreach (GameObject sceneObj in scene)
             {
-                tree.Add(new SearchTreeGroupEntry(new GUIContent(text: $"{sceneObj.name}"), level: 2));
+                var sceneObjName = sceneObj.name;
+                var sceneObjID = sceneObj.GetInstanceID();
+                var sceneIDtoObj = Resources.InstanceIDToObject(sceneObjID);
+                bool hasFields = false;
+
+                tree.Add(new SearchTreeGroupEntry(new GUIContent(text: $"[Object] {sceneObjName}"), level: 2));
 
                 Component[] components = sceneObj.GetComponents(typeof(Component));
                 foreach (Component component in components)
                 {
-                    tree.Add(new SearchTreeGroupEntry(new GUIContent(text: $"[Component] {component.GetType().Name}"), level: 3));
+                    var componentType = component.GetType();
+                    var componentName = componentType.Name;
+                    var getComponent = sceneIDtoObj.GetComponent(componentType);
+                    var getComponentType = getComponent.GetType();
 
                     BindingFlags allInstance = BindingFlags.DeclaredOnly |
                         BindingFlags.Public |
                         BindingFlags.Instance;
-                    foreach (FieldInfo fieldInfo in component.GetType().GetFields(allInstance))
+
+                    if (componentType.GetFields(allInstance).Length != 0)
                     {
-                        var fieldtype = Resources.InstanceIDToObject(sceneObj.GetInstanceID()).GetComponent(component.GetType()).GetType().GetField($"{fieldInfo.Name}").FieldType.Name;
-                        tree.Add(new(new GUIContent(text: $"[{fieldtype}] {fieldInfo.Name}", _indentationIcon))
+                        tree.Add(new SearchTreeGroupEntry(new GUIContent(text: $"[Component] {componentName}"), level: 3));
+                        if (hasFields == false)
                         {
-                            userData = Resources.InstanceIDToObject(sceneObj.GetInstanceID()).GetComponent(component.GetType()).GetType().GetField($"{fieldInfo.Name}").GetValue(Resources.InstanceIDToObject(sceneObj.GetInstanceID()).GetComponent(component.GetType())),
-                            level = 4
-                        });
+                            hasFields = true;
+                        }
+                    }
+
+                    foreach (FieldInfo fieldInfo in componentType.GetFields(allInstance))
+                    {
+                        var fieldInfoName = fieldInfo.Name;
+                        var field = getComponentType.GetField($"{fieldInfoName}");
+                        var fieldType = field.FieldType;
+                        var fieldTypeName = fieldType.Name;
+
+                        if (fieldType.IsArray == false)
+                        {
+                            tree.Add(new(new GUIContent(text: $"[{fieldTypeName}] {fieldInfoName}", _indentationIcon))
+                            {
+                                userData = field.GetValue(getComponent),
+                                level = 4
+                            });
+                        }
                     }
                     //foreach (PropertyInfo propertyInfo in component.GetType().GetProperties(allInstance))
                     //{
@@ -150,6 +175,13 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
                     //        level = 4
                     //    });
                     //}
+                }
+
+                //removes objects that have no accessable fields
+                if (hasFields == false)
+                {
+                    Debug.Log($"{tree[tree.Count - 1].name} has no fields");
+                    tree.RemoveAt(tree.Count - 1);
                 }
             }
             #endregion
@@ -179,6 +211,7 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
         {
             case DialogueNode:
                 _graphEditorView.CreateNode(typeof(DialogueNode), _graphEditorView.position);
+                Debug.Log(_graphEditorView._graph.nodes[0].GetType().Name);
                 return true;
             case ChoiceNode:
                 _graphEditorView.CreateNode(typeof(ChoiceNode), _graphEditorView.position);
