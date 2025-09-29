@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using System.Reflection;
 using Unity.VisualScripting;
+using System.Linq;
 
 public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
 {
@@ -47,6 +48,7 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
 
     public List<SearchTreeEntry> CreateSearchTree(SearchWindowContext context)
     {
+        #region Node based selections
         tree = new List<SearchTreeEntry>
         {
             new SearchTreeGroupEntry(new GUIContent(text: "Create Node"), level: 0),
@@ -95,6 +97,7 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
                 level = 2
             },
         };
+        #endregion
         #region Blackboard Elements
         {
             tree.Add(new SearchTreeGroupEntry(new GUIContent(text: "Blackboard"), level: 1));
@@ -149,38 +152,39 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
                         {
                             hasFields = true;
                         }
-                    }
 
-                    foreach (FieldInfo fieldInfo in componentType.GetFields(allInstance))
-                    {
-                        var fieldInfoName = fieldInfo.Name;
-                        var field = getComponentType.GetField($"{fieldInfoName}");
-                        var fieldType = field.FieldType;
-                        var fieldTypeName = fieldType.Name;
-
-                        if (fieldType.IsArray == false)
+                        foreach (FieldInfo fieldInfo in componentType.GetFields(allInstance))
                         {
-                            tree.Add(new(new GUIContent(text: $"[{fieldTypeName}] {fieldInfoName}", _indentationIcon))
+                            var fieldInfoName = fieldInfo.Name;
+                            var field = getComponentType.GetField($"{fieldInfoName}");
+                            var fieldType = field.FieldType;
+                            var fieldTypeName = fieldType.Name;
+
+                            if (fieldType.IsArray == false)
                             {
-                                userData = field.GetValue(getComponent),
-                                level = 4
-                            });
+                                tree.Add(new(new GUIContent(text: $"[{fieldTypeName}] {fieldInfoName}", _indentationIcon))
+                                {
+                                    userData = field.GetValue(getComponent),
+                                    level = 4
+                                });
+                            }
                         }
+
+                        //foreach (PropertyInfo propertyInfo in component.GetType().GetProperties(allInstance))
+                        //{
+                        //    tree.Add(new(new GUIContent(text: $"[{component.GetType().Name}] {propertyInfo.Name}", _indentationIcon))
+                        //    {
+                        //        userData = $"{sceneObj.GetInstanceID()} {component.GetType().Name} {propertyInfo.Name}",
+                        //        level = 4
+                        //    });
+                        //}
                     }
-                    //foreach (PropertyInfo propertyInfo in component.GetType().GetProperties(allInstance))
-                    //{
-                    //    tree.Add(new(new GUIContent(text: $"[{component.GetType().Name}] {propertyInfo.Name}", _indentationIcon))
-                    //    {
-                    //        userData = $"{sceneObj.GetInstanceID()} {component.GetType().Name} {propertyInfo.Name}",
-                    //        level = 4
-                    //    });
-                    //}
                 }
 
                 //removes objects that have no accessable fields
                 if (hasFields == false)
                 {
-                    Debug.Log($"{tree[tree.Count - 1].name} has no fields");
+                    //Debug.Log($"{tree[tree.Count - 1].name} has no fields");
                     tree.RemoveAt(tree.Count - 1);
                 }
             }
@@ -261,11 +265,23 @@ public class NodeSeachWindow : ScriptableObject, ISearchWindowProvider
             default:
                 for (int i = 0; i < blackboardContainer.exposedProperties.Count; i++)
                 {
+                    #region Custom Blackboard Node creation
                     if (SearchTreeEntry.userData.ToString() == blackboardContainer.exposedProperties[i].propertyName)
                     {
+                        _graphEditorView.CreateNode(typeof(BlackboardNode), _graphEditorView.position);
+                        var blackboardNode = _graphEditorView._graph.nodes[_graphEditorView._graph.nodes.Count - 1] as BlackboardNode;
+
+                        blackboardNode._name = blackboardContainer.exposedProperties[i].propertyName;
+                        blackboardNode.propertyType = blackboardContainer.exposedProperties[i].propertyType;
+                        blackboardNode.stringValue = blackboardContainer.exposedProperties[i].propertyValueString;
+                        blackboardNode.intValue = blackboardContainer.exposedProperties[i].propertyValueInt;
+                        blackboardNode.floatValue = blackboardContainer.exposedProperties[i].propertyValueFloat;
+                        blackboardNode.boolValue = blackboardContainer.exposedProperties[i].propertyValueBool;
+
                         Debug.Log($"{SearchTreeEntry.userData} is an exposed property of type {blackboardContainer.exposedProperties[i].propertyType} \n {blackboardContainer.exposedProperties[i].propertyName}");
                         return true;
                     }
+                    #endregion
                 }
                 Debug.Log($"{SearchTreeEntry.userData}");
                 return false;

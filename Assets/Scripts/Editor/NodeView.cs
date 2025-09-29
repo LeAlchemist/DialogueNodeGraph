@@ -9,7 +9,9 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
     public Action<NodeView> OnNodeSelected;
     public Node node;
     public Port input;
+    public Port blackboardInput;
     public Port output;
+    public Port blackboardOutput;
 
     public NodeView(Node node)
     {
@@ -55,28 +57,45 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
     {
         switch (node)
         {
+            case BlackboardNode:
+                AddToClassList("blackboardNode");
+                break;
+            case ChoiceNode:
+                AddToClassList("choiceNode");
+                break;
+            case DebugLogNode:
+                AddToClassList("debugLogNode");
+                break;
+            case DialogueNode:
+                AddToClassList("dialogueNode");
+                break;
+            case RepeatNode:
+                AddToClassList("repeatNode");
+                break;
+            case SequencerNode:
+                AddToClassList("sequencerNode");
+                break;
+            case WaitNode:
+                AddToClassList("waitNode");
+                break;
             case ActionNode:
                 AddToClassList("action");
-                AddToClassList(this.title);
                 break;
             case CompositeNode:
                 AddToClassList("composite");
-                AddToClassList(this.title);
                 break;
             case DecoratorNode:
                 AddToClassList("decorator");
-                AddToClassList(this.title);
                 break;
             case RootNode:
                 AddToClassList("root");
-                AddToClassList(this.title);
                 break;
         }
     }
 
     private void SetDescription()
     {
-        var description = new Label(node.description);
+        var description = new Label(node.GetType().Name.Replace("Node", ""));
         mainContainer.Insert(1, description);
     }
 
@@ -84,6 +103,8 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
     {
         switch (node)
         {
+            case BlackboardNode:
+                break;
             case DialogueNode:
                 input = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(bool));
                 break;
@@ -111,6 +132,12 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
             input.portName = "Input";
             inputContainer.Add(input);
         }
+
+        if (blackboardInput != null)
+        {
+            blackboardInput.portName = "Blackboard";
+            inputContainer.Add(blackboardInput);
+        }
     }
 
     private void CreateOutputPorts()
@@ -134,6 +161,12 @@ public class NodeView : UnityEditor.Experimental.GraphView.Node
         {
             output.portName = "Output";
             outputContainer.Add(output);
+        }
+
+        if (blackboardOutput != null)
+        {
+            blackboardOutput.portName = "Blackboard";
+            outputContainer.Add(blackboardOutput);
         }
     }
 

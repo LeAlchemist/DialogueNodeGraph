@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -23,8 +24,6 @@ public abstract class Node : ScriptableObject
     public int loopCount;
     [HideInInspector]
     public Vector2 position;
-    [HideInInspector]
-    public Blackboard blackboard;
     [HideInInspector]
     public string description;
     [HideInInspector]

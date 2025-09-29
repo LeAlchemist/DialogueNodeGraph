@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System;
 
 [CreateAssetMenu(menuName = "Dialogue Graph")]
 public class DialogueGraph : ScriptableObject
@@ -58,6 +59,13 @@ public class DialogueGraph : ScriptableObject
             EditorUtility.SetDirty(decorator);
         }
 
+        BlackboardNode blackboard = parent as BlackboardNode;
+        if (blackboard)
+        {
+            blackboard.blackboardNodes.Add(Child);
+            EditorUtility.SetDirty(blackboard);
+        }
+
         ChoiceNode choice = parent as ChoiceNode;
         if (choice)
         {
@@ -79,11 +87,17 @@ public class DialogueGraph : ScriptableObject
             root.child = Child;
             EditorUtility.SetDirty(root);
         }
-
     }
 
     public void RemoveChild(Node parent, Node Child)
     {
+        BlackboardNode blackboard = parent as BlackboardNode;
+        if (blackboard)
+        {
+            blackboard.blackboardNodes.Remove(Child);
+            EditorUtility.SetDirty(blackboard);
+        }
+
         DecoratorNode decorator = parent as DecoratorNode;
         if (decorator)
         {
@@ -117,7 +131,7 @@ public class DialogueGraph : ScriptableObject
 
     public List<Node> GetChildren(Node parent)
     {
-        List<Node> children = new List<Node>();
+        List<Node> children = new();
 
         DecoratorNode decorator = parent as DecoratorNode;
         if (decorator && decorator.child != null)

@@ -42,6 +42,30 @@ Label {
 }
 
 /*colors for individual nodes*/
-.DebugLog #title{
+.blackboardNode #title{
+    background-color: rgb(37, 37, 37);
+}
+
+.choiceNode #title{
+    background-color: rgb(4, 0, 255);
+}
+
+.debugLogNode #title{
     background-color: rgb(255, 0, 0);
+}
+
+.dialogueNode #title{
+    background-color: rgb(0, 90, 15);
+}
+
+.repeatNode #title{
+    background-color: rgb(105, 0, 91);
+}
+
+.sequencerNode #title{
+    background-color: rgb(4, 0, 255);
+}
+
+.waitNode #title{
+    background-color: rgb(0, 90, 15);
 }

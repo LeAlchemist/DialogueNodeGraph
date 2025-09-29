@@ -90,14 +90,12 @@ public partial class GraphEditorView : GraphView
         {
             graphViewChange.elementsToRemove.ForEach(elem =>
             {
-                NodeView nodeView = elem as NodeView;
-                if (nodeView != null)
+                if (elem is NodeView nodeView)
                 {
                     _graph.DeleteNode(nodeView.node);
                 }
 
-                Edge edge = elem as Edge;
-                if (edge != null)
+                if (elem is Edge edge)
                 {
                     NodeView parentView = edge.output.node as NodeView;
                     NodeView childView = edge.input.node as NodeView;
@@ -144,8 +142,10 @@ public partial class GraphEditorView : GraphView
 
     void CreateNodeView(Node node)
     {
-        NodeView nodeView = new NodeView(node);
-        nodeView.OnNodeSelected = OnNodeSelected;
+        NodeView nodeView = new(node)
+        {
+            OnNodeSelected = OnNodeSelected
+        };
         AddElement(nodeView);
     }
 

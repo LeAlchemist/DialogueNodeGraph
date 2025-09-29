@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3012300115355987035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd9156ce47de5d04e91a999838e835d5, type: 3}
+  m_Name: DebugLogNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  _name: 
+  guid: 0946bc787aaecbf46bfcaa96822990eb
+  loop: 0
+  loopCount: 0
+  position: {x: 462, y: -13}
+  description: Displays custom debug messages
+  scale: {x: 250, y: 750}
+  onStart: 0
+  onStop: 0
+  onUpdate: 0
+  message: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b760d76ce874a24dbc8f11d85988d0b, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  rootNode: {fileID: 1747464741872857948}
+  node: 0
+  dialogueNode: {fileID: 0}
+  graphState: 0
+  nodes:
+  - {fileID: 1747464741872857948}
+  - {fileID: 2969151336332111209}
+  - {fileID: -3012300115355987035}
+--- !u!114 &1747464741872857948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: badd9e609898ed44d85e4a5219709eee, type: 3}
+  m_Name: RootNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  _name: 
+  guid: 5f12fb4df2f85044583d14489b5d77bf
+  loop: 0
+  loopCount: 0
+  position: {x: 0, y: 0}
+  description: This is where it all starts
+  scale: {x: 150, y: 750}
+  child: {fileID: 2969151336332111209}
+--- !u!114 &2969151336332111209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0edc7bf08316aa249b0047264b8ac788, type: 3}
+  m_Name: RepeatNode
+  m_EditorClassIdentifier: 
+  state: 0
+  started: 0
+  _name: 
+  guid: 81d4265bb5f5131488b9c2969280e2b1
+  loop: 0
+  loopCount: 0
+  position: {x: 179, y: -13}
+  description: Plays the sequence of connected nodes over and over
+  scale: {x: 250, y: 750}
+  child: {fileID: -3012300115355987035}
+  repeatCount: 0
